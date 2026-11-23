@@ -1,0 +1,2086 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>งานแผนงาน โรงเรียนพิษณุโลกพิทยาคม</title>
+<meta name="description" content="ศูนย์รวมระบบแผนงาน (ppksar) ตรวจสอบสถานะกิจกรรม ปีงบประมาณ 2570 แบบฟอร์มโครงการ เล่มแผนปฏิบัติการ คู่มือ และระเบียบการเบิกจ่าย โรงเรียนพิษณุโลกพิทยาคม">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@600;700;800&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum: #2e163b;
+    --plum-deep: #210e2b;
+    --plum-soft: #432356;
+    --ink: #1d1522;
+    --muted: #5e5266;
+    --line: #2e163b;
+    --subline: #d4c8dd;
+    --gold: #dfa034;
+    --gold-dark: #b57b18;
+    --cream: #faf8fc;
+    --paper: #f3eef7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #fff;
+    color: var(--ink);
+    font-family: "IBM Plex Sans Thai", system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== OUTER ARCHITECTURAL FRAME (Option B — 0px radius, full viewport) ===== */
+  .app-shell {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    border: 2px solid var(--line);
+  }
+
+  /* ===== LEFT COLUMN: PERSISTENT DEEP PLUM CONTROL SPINE ===== */
+  .spine {
+    background: var(--plum);
+    color: #fff;
+    border-right: 2px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px 28px 26px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .brand {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    padding-bottom: 20px;
+  }
+  .brand-school {
+    font-size: 13px;
+    color: #cbb9d6;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .brand-title {
+    font: 700 22px/1.25 "Noto Serif Thai", serif;
+    color: #fff;
+    margin-top: 3px;
+  }
+
+  .fy-block {
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .sp-kicker {
+    font-size: 13px;
+    color: #d6c5e0;
+    font-weight: 500;
+  }
+  .fy-block h1 {
+    font: 800 44px/1.08 "Noto Serif Thai", serif;
+    margin-top: 4px;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+  .sp-progress {
+    margin-top: 18px;
+  }
+  .sp-bar {
+    height: 5px;
+    background: rgba(255, 255, 255, 0.18);
+    position: relative;
+  }
+  .sp-fill {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    background: var(--gold);
+    transition: width 0.6s ease-out;
+  }
+  .sp-dot {
+    position: absolute;
+    top: -4px;
+    width: 13px;
+    height: 13px;
+    margin-left: -6.5px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px var(--plum);
+  }
+  .sp-months {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #cbb9d6;
+    margin-top: 9px;
+  }
+
+  /* Primary Action Buttons inside Spine (0px radius, high contrast) */
+  .sp-actions {
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .btn-main {
+    display: block;
+    background: var(--gold);
+    color: var(--plum-deep);
+    text-decoration: none;
+    padding: 18px 20px;
+    border: 1px solid var(--gold);
+    transition: filter 0.12s ease, transform 0.1s ease;
+  }
+  .btn-main:hover {
+    filter: brightness(1.06);
+  }
+  .btn-main:focus-visible, .btn-sub:focus-visible, .tab-btn:focus-visible, .l-row:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+  }
+  .btn-main b {
+    display: block;
+    font: 700 21px/1.2 "Noto Serif Thai", serif;
+  }
+  .btn-main small {
+    display: block;
+    font-size: 13px;
+    color: #362003;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+  .btn-sub {
+    display: block;
+    background: var(--plum-soft);
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    color: #fff;
+    text-decoration: none;
+    padding: 16px 20px;
+    transition: background 0.12s ease, border-color 0.12s ease;
+  }
+  .btn-sub:hover {
+    background: #532c6a;
+    border-color: #fff;
+  }
+  .btn-sub b {
+    display: block;
+    font: 700 19.5px/1.2 "Noto Serif Thai", serif;
+  }
+  .btn-sub small {
+    display: block;
+    font-size: 12.5px;
+    color: #e2d5eb;
+    margin-top: 4px;
+  }
+
+  .sp-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    padding-top: 16px;
+    font-size: 12px;
+    color: #bfaCCb;
+    line-height: 1.55;
+  }
+  .sp-footer a {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ===== RIGHT COLUMN: NAVIGATION BAR + LEDGER WORKSPACE ===== */
+  .workspace {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: #fff;
+  }
+
+  /* Architectural Top Tab Bar */
+  .top-nav {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    border-bottom: 2px solid var(--line);
+    background: var(--cream);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .tab-btn {
+    appearance: none;
+    border: none;
+    border-right: 1px solid var(--subline);
+    background: transparent;
+    color: var(--ink);
+    padding: 18px 12px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2px;
+    transition: background 0.12s ease, color 0.12s ease;
+  }
+  .tab-btn:last-child { border-right: none; }
+  .tab-btn:hover {
+    background: var(--paper);
+  }
+  .tab-btn .t-num {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .tab-btn .t-label {
+    font: 700 16.5px/1.25 "Noto Serif Thai", serif;
+    color: var(--plum);
+  }
+  .tab-btn[aria-selected="true"] {
+    background: #fff;
+    box-shadow: inset 0 -4px 0 var(--gold);
+  }
+  .tab-btn[aria-selected="true"] .t-num {
+    color: var(--gold-dark);
+  }
+  .tab-btn[aria-selected="true"] .t-label {
+    color: var(--plum-deep);
+  }
+
+  /* Section Banner / Context Bar */
+  .section-head {
+    padding: 28px 36px 22px;
+    border-bottom: 1.5px solid var(--line);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: #fff;
+  }
+  .section-head h2 {
+    font: 800 30px/1.2 "Noto Serif Thai", serif;
+    color: var(--plum);
+  }
+  .section-head p {
+    font-size: 15px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .section-meta {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* ===== HOME VIEW: 4 LARGE LEDGER QUADRANTS + QUICK DIRECT LINKS ===== */
+  .home-split {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .ledger-4 {
+    display: grid;
+    grid-template-rows: repeat(4, minmax(118px, 1fr));
+    border-bottom: 2px solid var(--line);
+  }
+  .l-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 22px 36px;
+    border-bottom: 1px solid var(--subline);
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    font-family: inherit;
+    transition: background 0.12s ease, padding-left 0.12s ease;
+  }
+  .l-row:last-child { border-bottom: none; }
+  .l-row:hover {
+    background: var(--cream);
+    padding-left: 42px;
+  }
+  .l-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .l-row b {
+    font: 700 23px/1.25 "Noto Serif Thai", serif;
+    color: var(--plum);
+  }
+  .l-row em {
+    font-style: normal;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--plum);
+    background: var(--paper);
+    padding: 3px 10px;
+    border: 1px solid var(--subline);
+    white-space: nowrap;
+  }
+  .l-row p {
+    font-size: 15px;
+    color: var(--muted);
+    margin-top: 5px;
+    line-height: 1.45;
+  }
+
+  /* Sub-ledger for immediate direct document downloads on Home */
+  .sub-header {
+    padding: 14px 36px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--subline);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--plum);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .doc-table {
+    display: flex;
+    flex-direction: column;
+  }
+  .doc-row {
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    align-items: baseline;
+    gap: 20px;
+    padding: 18px 36px;
+    border-bottom: 1px solid var(--subline);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.12s ease;
+  }
+  .doc-row:hover {
+    background: var(--cream);
+  }
+  .doc-fy {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--plum);
+  }
+  .doc-fy.current {
+    color: var(--plum-deep);
+    border-left: 3px solid var(--gold);
+    padding-left: 8px;
+  }
+  .doc-main b {
+    display: block;
+    font: 700 18px/1.35 "Noto Serif Thai", serif;
+    color: var(--plum);
+  }
+  .doc-row:hover .doc-main b {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .doc-main small {
+    display: block;
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+  .doc-action {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--plum);
+    border: 1px solid var(--subline);
+    background: #fff;
+    padding: 5px 12px;
+    white-space: nowrap;
+  }
+  .doc-row:hover .doc-action {
+    border-color: var(--plum);
+    background: var(--plum);
+    color: #fff;
+  }
+
+  /* Year group headers inside Plans / Forms */
+  .year-group-bar {
+    padding: 14px 36px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--subline);
+    font: 700 16px/1.3 "Noto Serif Thai", serif;
+    color: var(--plum-deep);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .year-group-bar.highlight {
+    background: #fdf6e9;
+    border-left: 5px solid var(--gold);
+    padding-left: 31px;
+  }
+
+  /* ===== STAFF DIRECTORY (Search + Filter + Sharp Table) ===== */
+  .filter-bar {
+    padding: 18px 36px;
+    background: var(--cream);
+    border-bottom: 1.5px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 220px 240px auto;
+    gap: 12px;
+    align-items: center;
+  }
+  .filter-bar input, .filter-bar select {
+    height: 40px;
+    padding: 0 12px;
+    border: 1.5px solid var(--line);
+    border-radius: 0;
+    background: #fff;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 14.5px;
+  }
+  .filter-bar input:focus, .filter-bar select:focus {
+    outline: 2px solid var(--gold);
+    outline-offset: 1px;
+  }
+  .staff-count {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--plum);
+    white-space: nowrap;
+    padding-left: 6px;
+  }
+  .staff-table-wrap {
+    overflow-x: auto;
+  }
+  table.staff-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14.5px;
+  }
+  .staff-table th {
+    background: var(--paper);
+    color: var(--plum-deep);
+    font-weight: 700;
+    padding: 12px 20px;
+    border-bottom: 1.5px solid var(--line);
+    font-size: 13.5px;
+  }
+  .staff-table th:first-child, .staff-table td:first-child {
+    padding-left: 36px;
+    width: 70px;
+    color: var(--muted);
+  }
+  .staff-table td {
+    padding: 11px 20px;
+    border-bottom: 1px solid var(--subline);
+  }
+  .staff-table tr:hover td {
+    background: var(--cream);
+  }
+  .staff-name {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .ws-footer {
+    display: none;
+    border-top: 2px solid var(--line);
+    background: var(--plum);
+    color: #bfaCCb;
+    padding: 18px 20px;
+    font-size: 12px;
+    line-height: 1.55;
+  }
+  .ws-footer strong { color: #fff; }
+  .ws-footer a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+  .admin-open-btn {
+    margin-top: 10px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 5px 10px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .admin-open-btn:hover {
+    background: var(--gold);
+    color: var(--plum-deep);
+    border-color: var(--gold);
+  }
+  .sync-badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 1px 7px;
+    background: var(--paper);
+    color: var(--plum);
+    border: 1px solid var(--subline);
+    margin-left: 6px;
+  }
+
+  /* ===== ADMIN PANEL (#admin) — Architectural Ledger Style (0px radius) ===== */
+  .admin-toolbar {
+    padding: 16px 36px;
+    background: var(--paper);
+    border-bottom: 1.5px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .admin-subtabs {
+    display: flex;
+    gap: 0;
+    border: 1.5px solid var(--line);
+    background: #fff;
+  }
+  .adm-subbtn {
+    appearance: none;
+    border: none;
+    border-right: 1px solid var(--line);
+    background: #fff;
+    color: var(--plum);
+    padding: 9px 16px;
+    font: 700 14px/1.2 "IBM Plex Sans Thai", sans-serif;
+    cursor: pointer;
+  }
+  .adm-subbtn:last-child { border-right: none; }
+  .adm-subbtn.active {
+    background: var(--plum);
+    color: #fff;
+  }
+  .adm-btn {
+    appearance: none;
+    border: 1.5px solid var(--line);
+    background: #fff;
+    color: var(--plum);
+    padding: 9px 16px;
+    font: 700 14px/1.2 "IBM Plex Sans Thai", sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .adm-btn:hover { background: var(--cream); }
+  .adm-btn.gold {
+    background: var(--gold);
+    color: var(--plum-deep);
+    border-color: var(--line);
+  }
+  .adm-btn.gold:hover { filter: brightness(1.05); }
+  .adm-btn.plum {
+    background: var(--plum);
+    color: #fff;
+  }
+  .adm-btn.danger {
+    color: #8b1e1e;
+    border-color: #cfa8a8;
+  }
+  .adm-btn.danger:hover {
+    background: #fdf0f0;
+  }
+  .adm-box {
+    padding: 24px 36px;
+    border-bottom: 1.5px solid var(--subline);
+  }
+  .adm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .adm-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .adm-field.full {
+    grid-column: 1 / -1;
+  }
+  .adm-field label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--plum);
+  }
+  .adm-field input, .adm-field select, .adm-field textarea {
+    padding: 9px 12px;
+    border: 1.5px solid var(--line);
+    border-radius: 0;
+    font-family: inherit;
+    font-size: 14.5px;
+    color: var(--ink);
+    background: #fff;
+  }
+  .adm-status-bar {
+    padding: 12px 36px;
+    background: #fdf6e9;
+    border-bottom: 1.5px solid var(--line);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--plum-deep);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .adm-doc-item {
+    padding: 16px 36px;
+    border-bottom: 1px solid var(--subline);
+    display: grid;
+    grid-template-columns: 130px 95px 1fr auto;
+    gap: 12px;
+    align-items: start;
+    background: #fff;
+  }
+  .adm-doc-item:hover { background: var(--cream); }
+  .adm-doc-inputs {
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    gap: 8px;
+  }
+  .adm-doc-inputs input {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid var(--subline);
+    font-family: inherit;
+    font-size: 14px;
+  }
+  .adm-doc-inputs input:focus {
+    border-color: var(--line);
+    outline: none;
+  }
+  .adm-code {
+    background: #1d1522;
+    color: #f3eef7;
+    padding: 16px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12.5px;
+    line-height: 1.5;
+    max-height: 320px;
+    overflow: auto;
+    white-space: pre;
+    border: 1.5px solid var(--line);
+    margin-top: 10px;
+  }
+
+  .hidden { display: none !important; }
+
+  /* ===== RESPONSIVE (Tablet & Mobile) ===== */
+  @media (max-width: 960px) {
+    .app-shell {
+      grid-template-columns: 1fr;
+    }
+    .spine {
+      position: static;
+      height: auto;
+      border-right: none;
+      border-bottom: 2px solid var(--line);
+      padding: 18px 20px 16px;
+    }
+    .sp-footer {
+      display: none;
+    }
+    .ws-footer {
+      display: block;
+    }
+    .brand {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .fy-block {
+      padding: 12px 0;
+    }
+    .fy-block h1 {
+      font-size: 28px;
+    }
+    .sp-progress {
+      margin-top: 12px;
+    }
+    .sp-actions {
+      padding: 14px 0 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .btn-main, .btn-sub {
+      padding: 13px 14px;
+    }
+    .btn-main b, .btn-sub b {
+      font-size: 17px;
+    }
+    .top-nav {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .tab-btn {
+      border-bottom: 1px solid var(--subline);
+      padding: 12px 14px;
+    }
+    .section-head, .l-row, .doc-row, .sub-header, .year-group-bar, .filter-bar, .admin-toolbar, .adm-box, .adm-status-bar, .adm-doc-item {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .adm-grid {
+      grid-template-columns: 1fr;
+    }
+    .adm-doc-item {
+      grid-template-columns: 1fr;
+    }
+    .adm-doc-inputs {
+      grid-template-columns: 1fr;
+    }
+    .filter-bar {
+      grid-template-columns: 1fr;
+    }
+    .doc-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    .doc-action {
+      justify-self: start;
+      margin-top: 4px;
+    }
+    .staff-table th:first-child, .staff-table td:first-child {
+      padding-left: 20px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .sp-actions {
+      grid-template-columns: 1fr;
+    }
+    .top-nav {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .l-row b {
+      font-size: 19px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- ===== LEFT COLUMN: PERSISTENT DEEP PLUM CONTROL SPINE ===== -->
+  <aside class="spine" aria-label="แผงควบคุมหลักและปีงบประมาณ">
+    <div>
+      <div class="brand">
+        <div class="brand-school">โรงเรียนพิษณุโลกพิทยาคม</div>
+        <div class="brand-title">ฝ่ายแผนงานและงบประมาณ</div>
+      </div>
+
+      <div class="fy-block">
+        <div class="sp-kicker" id="fyNow">เดือนพฤศจิกายน · ไตรมาส 1</div>
+        <h1 id="fyTitle">ปีงบ 2570</h1>
+        <div class="sp-progress">
+          <div class="sp-bar">
+            <div class="sp-fill" id="done" style="width:14%"></div>
+            <div class="sp-dot" id="dot" style="left:14%"></div>
+          </div>
+          <div class="sp-months">
+            <span id="mStart">ต.ค. 69</span>
+            <span id="mMid">มี.ค. 70</span>
+            <span id="mEnd">ก.ย. 70</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sp-actions">
+        <a class="btn-main" id="linkPpksar" href="http://161.82.218.12/ppksar" target="_blank" rel="noopener">
+          <b>เข้าสู่ระบบแผนงาน</b>
+          <small>สร้างกิจกรรม · ขออนุมัติใช้งบ · ปิดโครงการ</small>
+        </a>
+        <a class="btn-sub" id="linkStatus70" href="https://script.google.com/a/macros/pp.ac.th/s/AKfycbx7a1-gH2RMif03G1YDusNGbfIBUksTs5-tJw7QkGK1xWCC0V-dG3Es2-t_MChcKoET/exec" target="_blank" rel="noopener">
+          <b>ตรวจสถานะกิจกรรม 2570</b>
+          <small>เช็กผลตรวจข้อ 6–9 และใบอนุญาต (@pp.ac.th)</small>
+        </a>
+      </div>
+    </div>
+
+    <footer class="sp-footer">
+      <div><strong>งานแผนงาน โรงเรียนพิษณุโลกพิทยาคม</strong></div>
+      <div id="txtAffiliation">สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาพิษณุโลก อุตรดิตถ์</div>
+      <div style="margin-top:6px">
+        ติดต่อ: <a id="linkEmail" href="mailto:planning.pp64@gmail.com">planning.pp64@gmail.com</a>
+        · <a id="linkSchool" href="http://www.pp.ac.th/ppweb/index2.php" target="_blank" rel="noopener">เว็บโรงเรียน</a>
+      </div>
+      <div style="margin-top:4px;opacity:0.8">ข้อมูลล่าสุด: <span id="txtUpdated">23 พฤศจิกายน 2569</span></div>
+      <div>
+        <button type="button" class="admin-open-btn" data-goto="admin">จัดการข้อมูลเว็บ (สำหรับทีมแผน)</button>
+      </div>
+    </footer>
+  </aside>
+
+  <!-- ===== RIGHT COLUMN: TABBED LEDGER WORKSPACE ===== -->
+  <main class="workspace">
+    <nav class="top-nav" role="tablist" aria-label="หมวดหมู่เอกสารงานแผนงาน">
+      <button class="tab-btn" role="tab" data-tab="home" aria-selected="true">
+        <span class="t-num">01</span>
+        <span class="t-label">หน้าแรก</span>
+      </button>
+      <button class="tab-btn" role="tab" data-tab="forms" aria-selected="false">
+        <span class="t-num">02</span>
+        <span class="t-label">แบบฟอร์ม</span>
+      </button>
+      <button class="tab-btn" role="tab" data-tab="plans" aria-selected="false">
+        <span class="t-num">03</span>
+        <span class="t-label">เล่มแผน</span>
+      </button>
+      <button class="tab-btn" role="tab" data-tab="manual" aria-selected="false">
+        <span class="t-num">04</span>
+        <span class="t-label">คู่มือระบบ</span>
+      </button>
+      <button class="tab-btn" role="tab" data-tab="regulations" aria-selected="false">
+        <span class="t-num">05</span>
+        <span class="t-label">ระเบียบเบิกจ่าย</span>
+      </button>
+      <button class="tab-btn" role="tab" data-tab="staff" aria-selected="false">
+        <span class="t-num">06</span>
+        <span class="t-label">ผู้รับผิดชอบ</span>
+      </button>
+    </nav>
+
+    <!-- VIEW 01: หน้าแรก (Option B 4-Row Split Ledger + Direct Featured Files) -->
+    <section id="view-home" class="home-split" role="tabpanel">
+      <div class="ledger-4" aria-label="สารบบหลัก 4 หมวด">
+        <button type="button" class="l-row" data-goto="forms">
+          <div class="l-top"><b>แบบฟอร์มโครงการและรายงานผล</b><em>แบบฟอร์ม Word / Drive</em></div>
+          <p>แบบขออนุมัติโครงการ บันทึกข้อความขออนุญาตจัดกิจกรรม และแบบรายงานผล PM3a เมื่อเสร็จสิ้นโครงการ</p>
+        </button>
+        <button type="button" class="l-row" data-goto="plans">
+          <div class="l-top"><b>เล่มแผนปฏิบัติการประจำปี 2570</b><em>เล่ม PDF / ตารางงบ</em></div>
+          <p>รหัสกิจกรรม 70-001 ถึง 70-239 งบประมาณที่ได้รับจัดสรร แผนพัฒนาคุณภาพการศึกษา 2566–2570 และเล่มแผนย้อนหลัง</p>
+        </button>
+        <button type="button" class="l-row" data-goto="manual">
+          <div class="l-top"><b>คู่มือการใช้งานระบบแผนงาน (PM1–PM3)</b><em>ขั้นตอนพร้อมภาพ</em></div>
+          <p>วิธีตั้งกิจกรรมใหม่ในระบบ ppksar การผูกตัวชี้วัดให้ปลั๊กเป็นสีเขียว การเบิกงบ และการประเมินปิดโครงการ</p>
+        </button>
+        <button type="button" class="l-row" data-goto="regulations">
+          <div class="l-top"><b>ระเบียบและแนวทางการเบิกจ่าย</b><em>เกณฑ์การเงิน</em></div>
+          <p>แนวทางการดำเนินงานโครงการสนับสนุนค่าใช้จ่ายในการจัดการศึกษา (เงินอุดหนุนรายหัว และเงินพัฒนาผู้เรียน)</p>
+        </button>
+      </div>
+
+      <div class="sub-header">
+        <span>เอกสารสำคัญที่ใช้บ่อย (เปิดไฟล์ได้ทันที)</span>
+        <span>คลิกที่แถวเพื่อเปิดไฟล์ในแท็บใหม่</span>
+      </div>
+      <div class="doc-table" id="home-featured-list"></div>
+    </section>
+
+    <!-- VIEW 02: แบบฟอร์ม -->
+    <section id="view-forms" class="hidden" role="tabpanel">
+      <header class="section-head">
+        <div>
+          <h2>แบบฟอร์มโครงการและกิจกรรม</h2>
+          <p>เอกสารต้นแบบสำหรับขออนุมัติโครงการ ขออนุญาตจัดกิจกรรม และรายงานผลการดำเนินงาน</p>
+        </div>
+        <span class="section-meta">เปิดดาวน์โหลดตรงจาก Google Drive</span>
+      </header>
+      <div id="forms-list"></div>
+    </section>
+
+    <!-- VIEW 03: เล่มแผน -->
+    <section id="view-plans" class="hidden" role="tabpanel">
+      <header class="section-head">
+        <div>
+          <h2>เล่มแผนปฏิบัติการและแผนพัฒนาคุณภาพการศึกษา</h2>
+          <p>เรียงตามปีงบประมาณ (ปีงบประมาณปัจจุบันอยู่ด้านบนสุด)</p>
+        </div>
+        <span class="section-meta">ปีงบประมาณ 2567 – 2570</span>
+      </header>
+      <div id="plans-list"></div>
+    </section>
+
+    <!-- VIEW 04: คู่มือระบบ -->
+    <section id="view-manual" class="hidden" role="tabpanel">
+      <header class="section-head">
+        <div>
+          <h2>คู่มือการใช้งานโปรแกรมแผนงาน (PPKSAR)</h2>
+          <p>ขั้นตอนการสร้างกิจกรรม การเชื่อมตัวชี้วัด และการสรุปปิดโครงการในระบบออนไลน์</p>
+        </div>
+        <span class="section-meta">PM1 – PM3</span>
+      </header>
+      <div id="manual-list"></div>
+    </section>
+
+    <!-- VIEW 05: ระเบียบเบิกจ่าย -->
+    <section id="view-regulations" class="hidden" role="tabpanel">
+      <header class="section-head">
+        <div>
+          <h2>กฎหมาย ระเบียบ และแนวทางการเบิกจ่ายงบประมาณ</h2>
+          <p>หลักเกณฑ์การใช้งบประมาณเงินอุดหนุนและแนวปฏิบัติทางการเงินของสถานศึกษา</p>
+        </div>
+        <span class="section-meta">อ้างอิง สพฐ. / โรงเรียน</span>
+      </header>
+      <div id="regulations-list"></div>
+    </section>
+
+    <!-- VIEW 06: ผู้รับผิดชอบ -->
+    <section id="view-staff" class="hidden" role="tabpanel">
+      <header class="section-head">
+        <div>
+          <h2>รายชื่อผู้รับผิดชอบงานแผนงาน</h2>
+          <p>ค้นหาตามชื่อ-สกุล หรือกรองตามกลุ่มสาระการเรียนรู้และกลุ่มบริหารงาน (ไม่มีการแสดงรหัสผู้ใช้หรืออีเมลส่วนบุคคล)</p>
+        </div>
+        <span class="section-meta" id="staff-total-badge">ทั้งหมด 182 รายการ</span>
+      </header>
+      <div class="filter-bar">
+        <input type="search" id="staff-q" placeholder="พิมพ์ค้นหาชื่อ-สกุล, กลุ่มสาระ หรือกลุ่มงาน..." aria-label="ค้นหาชื่อผู้รับผิดชอบ">
+        <select id="staff-dept" aria-label="กรองตามกลุ่มสาระการเรียนรู้">
+          <option value="">ทุกกลุ่มสาระ / งาน</option>
+        </select>
+        <select id="staff-group" aria-label="กรองตามกลุ่มบริหารงาน">
+          <option value="">ทุกกลุ่มบริหารงาน</option>
+        </select>
+        <span class="staff-count" id="staff-match-count">182 รายการ</span>
+      </div>
+      <div class="staff-table-wrap">
+        <table class="staff-table">
+          <thead>
+            <tr>
+              <th>ลำดับ</th>
+              <th>ชื่อ – สกุล</th>
+              <th>กลุ่มสาระการเรียนรู้ / หน่วยงานย่อย</th>
+              <th>กลุ่มบริหารงาน</th>
+            </tr>
+          </thead>
+          <tbody id="staff-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- VIEW 07: หน้าแอดมินทีมแผนงาน (#admin — เชื่อม Google Sheet + แก้บนหน้าเว็บได้ทันที) -->
+    <section id="view-admin" class="hidden" role="tabpanel">
+      <header class="section-head">
+        <div>
+          <h2>ระบบจัดการข้อมูลเว็บ (สำหรับทีมแผนงาน)</h2>
+          <p>เพิ่ม/แก้ไขลิงก์เอกสาร ปรับรายชื่อผู้รับผิดชอบ และซิงค์ข้อมูลกับ Google Sheet หลังบ้านโดยไม่ต้องแก้โค้ด</p>
+        </div>
+        <span class="section-meta" id="adm-conn-badge">โหมดแก้ไขบนเว็บ</span>
+      </header>
+
+      <div class="adm-status-bar">
+        <span id="adm-msg">พร้อมแก้ไขข้อมูล — กดเพิ่มหรือแก้รายการด้านล่าง แล้วกด "บันทึกขึ้น Google Sheet" (หรือ "ดาวน์โหลดไฟล์ HTML ใหม่")</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button type="button" class="adm-btn gold" id="btn-save-sheet">บันทึกขึ้น Google Sheet</button>
+          <button type="button" class="adm-btn plum" id="btn-export-html">ดาวน์โหลดไฟล์เว็บ (index.html)</button>
+        </div>
+      </div>
+
+      <div class="admin-toolbar">
+        <div class="admin-subtabs" role="tablist">
+          <button type="button" class="adm-subbtn active" data-admtab="docs">1. จัดการเอกสารและลิงก์ (15)</button>
+          <button type="button" class="adm-subbtn" data-admtab="staff">2. จัดการผู้รับผิดชอบ (182)</button>
+          <button type="button" class="adm-subbtn" data-admtab="connect">3. เชื่อม Google Sheet &amp; ตั้งค่าเว็บ</button>
+        </div>
+        <button type="button" class="adm-btn" data-goto="home">← กลับไปดูหน้าเว็บปกติ</button>
+      </div>
+
+      <!-- SUB-VIEW A: จัดการเอกสาร -->
+      <div id="adm-pane-docs">
+        <div class="adm-box" style="background:var(--cream);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+          <div>
+            <strong style="color:var(--plum)">เพิ่มเอกสารหรือลิงก์ใหม่เข้าสู่ระบบ</strong>
+            <div style="font-size:13px;color:var(--muted)">เลือกหมวดหมู่ ใส่ปีงบประมาณ วางลิงก์ Google Drive/Docs แล้วกดปุ่ม "+ เพิ่มรายการ"</div>
+          </div>
+          <button type="button" class="adm-btn gold" id="btn-add-doc">+ เพิ่มเอกสารใหม่</button>
+        </div>
+
+        <!-- ฟอร์มเพิ่มเอกสารใหม่ (ซ่อนไว้จนกว่าจะกด + เพิ่มเอกสารใหม่) -->
+        <div id="new-doc-form" class="adm-box hidden" style="background:#fdf6e9;border-left:5px solid var(--gold)">
+          <div style="font:700 18px/1.3 'Noto Serif Thai',serif;color:var(--plum);margin-bottom:12px">เพิ่มรายการเอกสารใหม่</div>
+          <div class="adm-grid">
+            <div class="adm-field">
+              <label>หมวดหมู่เอกสาร</label>
+              <select id="nd-cat">
+                <option value="แบบฟอร์ม">02 แบบฟอร์มโครงการ/รายงานผล</option>
+                <option value="เล่มแผน">03 เล่มแผนปฏิบัติการประจำปี</option>
+                <option value="แผนพัฒนา">03 แผนพัฒนาคุณภาพการศึกษา</option>
+                <option value="คู่มือ">04 คู่มือการใช้งานระบบ (PM1–PM3)</option>
+                <option value="ระเบียบ">05 ระเบียบและแนวทางการเบิกจ่าย</option>
+              </select>
+            </div>
+            <div class="adm-field">
+              <label>ปีงบประมาณ (พ.ศ.)</label>
+              <input type="text" id="nd-fy" value="2570" placeholder="เช่น 2570">
+            </div>
+            <div class="adm-field full">
+              <label>ชื่อเอกสาร (บรรทัดหลัก)</label>
+              <input type="text" id="nd-title" placeholder="เช่น แผนปฏิบัติการประจำปีงบประมาณ 2570 (ฉบับปรับปรุง)">
+            </div>
+            <div class="adm-field full">
+              <label>คำอธิบายเพิ่มเติม (บรรทัดรอง)</label>
+              <input type="text" id="nd-sub" placeholder="เช่น รหัสกิจกรรม 70-001 ถึง 70-239 งบประมาณรวม...">
+            </div>
+            <div class="adm-field">
+              <label>ลิงก์ไฟล์ (Google Drive / Docs / Canva)</label>
+              <input type="url" id="nd-url" placeholder="https://drive.google.com/...">
+            </div>
+            <div class="adm-field">
+              <label>ข้อความป้ายปุ่มขวา + การปักหมุดหน้าแรก</label>
+              <div style="display:flex;gap:10px;align-items:center">
+                <input type="text" id="nd-badge" value="PDF" style="width:130px" placeholder="เช่น PDF, ไฟล์ Word">
+                <label style="display:flex;align-items:center;gap:6px;font-weight:600;cursor:pointer">
+                  <input type="checkbox" id="nd-feat" checked> แสดงในตารางหน้าแรกด้วย
+                </label>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:16px;display:flex;gap:10px">
+            <button type="button" class="adm-btn plum" id="btn-confirm-add-doc">เพิ่มเข้าตารางเอกสาร</button>
+            <button type="button" class="adm-btn" id="btn-cancel-add-doc">ยกเลิก</button>
+          </div>
+        </div>
+
+        <div id="adm-docs-list"></div>
+      </div>
+
+      <!-- SUB-VIEW B: จัดการผู้รับผิดชอบ -->
+      <div id="adm-pane-staff" class="hidden">
+        <div class="adm-box" style="background:var(--cream)">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+            <div>
+              <strong style="color:var(--plum)">รายชื่อผู้รับผิดชอบงานแผนงาน (กติกา L-5: ระบบตัดอีเมลและ username ออกอัตโนมัติ)</strong>
+              <div style="font-size:13px;color:var(--muted)">สามารถเพิ่มทีละคน หรือคัดลอกตารางจาก Excel / Google Sheet (ชื่อ-สกุล [Tab] กลุ่มสาระ [Tab] กลุ่มบริหารงาน) มาวางทับได้ทันที</div>
+            </div>
+            <div style="display:flex;gap:8px">
+              <button type="button" class="adm-btn gold" id="btn-add-staff">+ เพิ่มรายชื่อ</button>
+              <button type="button" class="adm-btn" id="btn-toggle-paste-staff">วางข้อมูลจาก Excel / Sheet</button>
+            </div>
+          </div>
+
+          <div id="paste-staff-box" class="hidden" style="margin-top:16px;padding-top:16px;border-top:1px solid var(--subline)">
+            <label style="font-size:13px;font-weight:700;color:var(--plum);display:block;margin-bottom:6px">
+              คัดลอกแถวจาก Google Sheet หรือ Excel มาวางที่นี่ (คอลัมน์: ชื่อ-สกุล | กลุ่มสาระ | กลุ่มบริหารงาน) — ระบบจะตัดอีเมลออกให้อัตโนมัติ:
+            </label>
+            <textarea id="staff-tsv-input" rows="6" style="width:100%;padding:10px;border:1.5px solid var(--line);font-family:inherit;font-size:13.5px" placeholder="นายสมชาย ใจดี	กลุ่มสาระการเรียนรู้คณิตศาสตร์	กลุ่มบริหารงานวิชาการ"></textarea>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <button type="button" class="adm-btn plum" id="btn-apply-tsv-staff">นำเข้าข้อมูลแทนที่ตารางเดิม</button>
+              <button type="button" class="adm-btn" id="btn-append-tsv-staff">ต่อท้ายตารางเดิม</button>
+            </div>
+          </div>
+        </div>
+        <div class="staff-table-wrap">
+          <table class="staff-table">
+            <thead>
+              <tr>
+                <th>ลำดับ</th>
+                <th>ชื่อ – สกุล</th>
+                <th>กลุ่มสาระการเรียนรู้ / หน่วยงานย่อย</th>
+                <th>กลุ่มบริหารงาน</th>
+                <th style="width:90px">จัดการ</th>
+              </tr>
+            </thead>
+            <tbody id="adm-staff-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SUB-VIEW C: เชื่อม Google Sheet & ตั้งค่าเว็บ -->
+      <div id="adm-pane-connect" class="hidden">
+        <div class="adm-box">
+          <h3 style="font:700 20px/1.3 'Noto Serif Thai',serif;color:var(--plum);margin-bottom:6px">การเชื่อมต่อ Google Sheet เป็นฐานข้อมูลหลังบ้าน (แบบ A)</h3>
+          <p style="font-size:14px;color:var(--muted);margin-bottom:14px">
+            สร้างไฟล์ Google Sheet หลังบ้านและใส่ข้อมูลทั้ง 15 เอกสาร + 182 รายชื่อ พร้อมติดตั้งโค้ด Apps Script ให้เรียบร้อยแล้ว:
+            <a id="link-open-sheet" href="https://docs.google.com/spreadsheets/d/1BIRsO9rDHGSzYljjPZgdBGvRi4fYXIFs3T1SvQvTh5o/edit" target="_blank" rel="noopener" style="font-weight:700;color:var(--plum)">เปิด Google Sheet หลังบ้านเว็บแผนงาน พ.พ. ↗</a>
+            · <a id="link-open-script" href="https://script.google.com/u/0/home/projects/1ThWPvrr4NhTz_vCtWdRPkvmda6p9Ol8qS5KdexJDbDXDxDZLrqSHtLL6/edit" target="_blank" rel="noopener" style="font-weight:700;color:var(--plum)">เปิดหน้า Apps Script เพื่อกด Authorise &amp; คัดลอก URL /exec ↗</a>
+          </p>
+          <div class="adm-grid">
+            <div class="adm-field full">
+              <label>URL เว็บแอป Google Apps Script (ลงท้ายด้วย <code>/exec</code>)</label>
+              <input type="url" id="cfg-api-url" placeholder="https://script.google.com/macros/s/AKfycb.../exec">
+            </div>
+            <div class="adm-field">
+              <label>รหัสผ่านแอดมินทีมแผน (ADMIN_PIN ที่ตั้งใน Apps Script)</label>
+              <input type="password" id="cfg-api-pin" value="pp2570" placeholder="ค่าเริ่มต้น: pp2570">
+            </div>
+            <div class="adm-field" style="justify-content:flex-end">
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <button type="button" class="adm-btn plum" id="btn-test-api">ทดสอบการเชื่อมต่อ &amp; ดึงข้อมูลจาก Sheet</button>
+                <button type="button" class="adm-btn gold" id="btn-push-init-api">ส่งข้อมูลปัจจุบันทั้งหมดขึ้นสร้างตารางใน Sheet</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="adm-box">
+          <h3 style="font:700 20px/1.3 'Noto Serif Thai',serif;color:var(--plum);margin-bottom:12px">ตั้งค่าลิงก์ระบบหลักและข้อมูลติดต่อ</h3>
+          <div class="adm-grid">
+            <div class="adm-field">
+              <label>ลิงก์ปุ่มหลัก 1: เข้าสู่ระบบแผนงาน (ppksar)</label>
+              <input type="url" id="cfg-ppksar">
+            </div>
+            <div class="adm-field">
+              <label>ลิงก์ปุ่มหลัก 2: ตรวจสถานะกิจกรรม 2570</label>
+              <input type="url" id="cfg-status70">
+            </div>
+            <div class="adm-field">
+              <label>ปีงบประมาณที่แสดง (เว้นว่าง = คำนวณตามวันที่จริงอัตโนมัติ)</label>
+              <input type="text" id="cfg-fy" placeholder="เช่น 2570 หรือเว้นว่างไว้">
+            </div>
+            <div class="adm-field">
+              <label>อีเมลติดต่อฝ่ายแผนงาน</label>
+              <input type="email" id="cfg-email">
+            </div>
+          </div>
+        </div>
+
+        <div class="adm-box" style="background:var(--cream)">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+            <div>
+              <strong style="color:var(--plum)">วิธีสร้าง Google Sheet หลังบ้านใน 2 นาที (ทำครั้งเดียว)</strong>
+              <div style="font-size:13.5px;color:var(--muted);margin-top:4px">
+                1. สร้าง Google Sheet ใหม่ 1 ไฟล์ → เมนู <strong>ส่วนขยาย (Extensions) &gt; Apps Script</strong><br>
+                2. กดปุ่ม <strong>"คัดลอกโค้ด Apps Script"</strong> ด้านขวานี้ ไปวางทับใน Apps Script แล้วกด <strong>Deploy &gt; New deployment &gt; Web app (Execute as: Me, Who has access: Anyone)</strong><br>
+                3. นำลิงก์ <code>/exec</code> ที่ได้มาวางในช่องด้านบน แล้วกด <strong>"ส่งข้อมูลปัจจุบันทั้งหมดขึ้นสร้างตารางใน Sheet"</strong> ระบบจะสร้างแท็บและกรอกข้อมูลทั้ง 15 เอกสาร + 182 รายชื่อลงใน Sheet ให้ทันที!
+              </div>
+            </div>
+            <button type="button" class="adm-btn plum" id="btn-copy-gas">คัดลอกโค้ด Apps Script</button>
+          </div>
+          <pre class="adm-code" id="gas-code-preview">/**
+ * หลังบ้านเว็บงานแผนงาน โรงเรียนพิษณุโลกพิทยาคม (Google Sheet + Apps Script API)
+ * --------------------------------------------------------------------------
+ * วิธีติดตั้ง (ใช้เวลาประมาณ 2 นาที):
+ * 1. สร้าง Google Sheet ใหม่ 1 ไฟล์ ตั้งชื่อเช่น "หลังบ้านเว็บแผนงาน พ.พ."
+ * 2. ไปที่เมนู ส่วนขยาย (Extensions) &gt; Apps Script
+ * 3. ลบโค้ดเดิมออกทั้งหมด แล้ววางโค้ดไฟล์นี้ลงไป กดบันทึก (Ctrl+S / Cmd+S)
+ * 4. เปลี่ยนรหัสผ่านแอดมินที่บรรทัด ADMIN_PIN ด้านล่าง (ค่าเริ่มต้นคือ "pp2570")
+ * 5. กดปุ่ม "ทำให้ใช้งานได้" (Deploy) &gt; "การทำให้ใช้งานได้รายการใหม่" (New deployment)
+ *    - ประเภท: เว็บแอป (Web app)
+ *    - ดำเนินการในฐานะ: ฉัน (Me)
+ *    - ผู้ที่มีสิทธิ์เข้าถึง: ทุกคน (Anyone)  &lt;-- เพื่อให้หน้าเว็บโหลดข้อมูลได้โดยคนเปิดไม่ต้องล็อกอิน
+ * 6. คัดลอก URL ของเว็บแอป (ลงท้ายด้วย /exec) ไปวางในหน้าแอดมินของเว็บ (#admin)
+ *    แล้วกดปุ่ม "ส่งข้อมูลเริ่มต้นขึ้น Google Sheet" บนหน้าเว็บได้เลย!
+ */
+
+const ADMIN_PIN = 'pp2570'; // &lt;-- เปลี่ยนรหัสผ่านทีมแผนงานตรงนี้ได้ตามต้องการ
+
+const SHEET_SETTINGS = 'ตั้งค่าเว็บ';
+const SHEET_DOCS     = 'เอกสารและลิงก์';
+const SHEET_STAFF    = 'ผู้รับผิดชอบ';
+
+/**
+ * เปิดอ่านข้อมูลทั้งหมด (GET) — หน้าเว็บจะเรียกอัตโนมัติเมื่อมีคนเปิดเว็บ
+ */
+function doGet(e) {
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    ensureSheetsExist_(ss);
+    const data = readAllFromSheets_(ss);
+    return jsonResponse_({ ok: true, data: data });
+  } catch (err) {
+    return jsonResponse_({ ok: false, error: String(err) });
+  }
+}
+
+/**
+ * รับคำสั่งแก้ไขจากหน้าแอดมินบนเว็บ (POST)
+ * ใช้ Content-Type: text/plain เพื่อไม่ติด CORS preflight จาก GitHub Pages หรือไฟล์ในเครื่อง
+ */
+function doPost(e) {
+  try {
+    const raw = (e &amp;&amp; e.postData &amp;&amp; e.postData.contents) ? e.postData.contents : '{}';
+    const body = JSON.parse(raw);
+
+    if (String(body.pin || '').trim() !== ADMIN_PIN) {
+      return jsonResponse_({ ok: false, error: 'รหัสผ่านแอดมินไม่ถูกต้อง' });
+    }
+
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    ensureSheetsExist_(ss);
+    const action = body.action || '';
+
+    if (action === 'ping') {
+      return jsonResponse_({ ok: true, message: 'เชื่อมต่อสำเร็จ', data: readAllFromSheets_(ss) });
+    }
+
+    if (action === 'init_all' || action === 'save_all') {
+      if (body.settings) writeSettingsSheet_(ss, body.settings);
+      if (Array.isArray(body.documents)) writeDocsSheet_(ss, body.documents);
+      if (Array.isArray(body.staff)) writeStaffSheet_(ss, body.staff);
+      touchUpdatedDate_(ss);
+      return jsonResponse_({ ok: true, data: readAllFromSheets_(ss) });
+    }
+
+    if (action === 'save_settings') {
+      writeSettingsSheet_(ss, body.settings || {});
+      touchUpdatedDate_(ss);
+      return jsonResponse_({ ok: true, data: readAllFromSheets_(ss) });
+    }
+
+    if (action === 'save_documents') {
+      writeDocsSheet_(ss, body.documents || []);
+      touchUpdatedDate_(ss);
+      return jsonResponse_({ ok: true, data: readAllFromSheets_(ss) });
+    }
+
+    if (action === 'save_staff') {
+      writeStaffSheet_(ss, body.staff || []);
+      touchUpdatedDate_(ss);
+      return jsonResponse_({ ok: true, data: readAllFromSheets_(ss) });
+    }
+
+    return jsonResponse_({ ok: false, error: 'ไม่รู้จักคำสั่ง: ' + action });
+  } catch (err) {
+    return jsonResponse_({ ok: false, error: String(err) });
+  }
+}
+
+/* ==================== HELPER FUNCTIONS ==================== */
+
+function jsonResponse_(obj) {
+  return ContentService
+    .createTextOutput(JSON.stringify(obj))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function ensureSheetsExist_(ss) {
+  if (!ss.getSheetByName(SHEET_DOCS)) {
+    const s = ss.insertSheet(SHEET_DOCS);
+    s.appendRow(['id', 'category', 'fy', 'title', 'subtitle', 'url', 'badge', 'featured_home']);
+    s.getRange(1, 1, 1, 8).setFontWeight('bold').setBackground('#f3edf7');
+    s.setFrozenRows(1);
+  }
+  if (!ss.getSheetByName(SHEET_STAFF)) {
+    const s = ss.insertSheet(SHEET_STAFF);
+    s.appendRow(['no', 'name', 'department', 'workgroup']);
+    s.getRange(1, 1, 1, 4).setFontWeight('bold').setBackground('#f3edf7');
+    s.setFrozenRows(1);
+  }
+  if (!ss.getSheetByName(SHEET_SETTINGS)) {
+    const s = ss.insertSheet(SHEET_SETTINGS);
+    s.appendRow(['key', 'value', 'note']);
+    s.getRange(1, 1, 1, 3).setFontWeight('bold').setBackground('#f3edf7');
+    s.setFrozenRows(1);
+  }
+}
+
+function readAllFromSheets_(ss) {
+  // 1. Settings
+  const sSet = ss.getSheetByName(SHEET_SETTINGS);
+  const setRows = sSet.getDataRange().getValues();
+  const settings = {};
+  for (let i = 1; i &lt; setRows.length; i++) {
+    const k = String(setRows[i][0] || '').trim();
+    const v = String(setRows[i][1] || '').trim();
+    if (k) settings[k] = v;
+  }
+
+  // 2. Documents
+  const sDoc = ss.getSheetByName(SHEET_DOCS);
+  const docRows = sDoc.getDataRange().getValues();
+  const documents = [];
+  for (let i = 1; i &lt; docRows.length; i++) {
+    const r = docRows[i];
+    const title = String(r[3] || '').trim();
+    const url = String(r[5] || '').trim();
+    if (!title &amp;&amp; !url) continue;
+    const featVal = String(r[7] || '').trim().toLowerCase();
+    documents.push({
+      id: String(r[0] || ('doc-' + i)).trim(),
+      category: String(r[1] || 'forms').trim(),
+      fy: String(r[2] || '2570').trim(),
+      title: title,
+      subtitle: String(r[4] || '').trim(),
+      url: url,
+      badge: String(r[6] || 'เปิดเอกสาร').trim(),
+      featured_home: (r[7] === true || featVal === 'true' || featVal === '1' || featVal === 'ใช่' || featVal === 'yes')
+    });
+  }
+
+  // 3. Staff (Rule L-5: strip any email/@username automatically)
+  const sStaff = ss.getSheetByName(SHEET_STAFF);
+  const staffRows = sStaff.getDataRange().getValues();
+  const staff = [];
+  for (let i = 1; i &lt; staffRows.length; i++) {
+    const r = staffRows[i];
+    const name = sanitizeNoEmail_(String(r[1] || '').trim());
+    if (!name) continue;
+    const deptVal = sanitizeNoEmail_(String(r[2] || '').trim());
+    const grpVal = sanitizeNoEmail_(String(r[3] || '').trim());
+    staff.push({
+      no: String(r[0] || staff.length + 1).trim(),
+      name: name,
+      dept: deptVal,
+      group: grpVal,
+      department: deptVal,
+      workgroup: grpVal
+    });
+  }
+
+  return {
+    settings: settings,
+    documents: documents,
+    staff: staff
+  };
+}
+
+function sanitizeNoEmail_(text) {
+  // ป้องกันการเผลอวางอีเมลในช่องชื่อหรือกลุ่มงาน (กติกา L-5)
+  return String(text || '').replace(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g, '').trim();
+}
+
+function writeSettingsSheet_(ss, settings) {
+  const s = ss.getSheetByName(SHEET_SETTINGS);
+  s.clearContents();
+  const notes = {
+    school_name: 'ชื่อโรงเรียน',
+    office_name: 'ชื่อฝ่ายงาน',
+    affiliation: 'สังกัด',
+    contact_email: 'อีเมลติดต่อฝ่ายแผนงาน',
+    school_site_url: 'ลิงก์เว็บไซต์หลักโรงเรียน',
+    ppksar_url: 'ลิงก์ปุ่มหลัก 1: ระบบแผนงาน (ppksar)',
+    status_2570_url: 'ลิงก์ปุ่มหลัก 2: เว็บตรวจสถานะกิจกรรม 2570',
+    fy_override: 'ปีงบประมาณปัจจุบัน (เช่น 2570 หรือเว้นว่างให้คำนวณอัตโนมัติ)',
+    updated_date: 'วันที่อัปเดตข้อมูลล่าสุด'
+  };
+  const rows = [['key', 'value', 'note']];
+  Object.keys(notes).forEach(function(k) {
+    rows.push([k, settings[k] !== undefined ? String(settings[k]) : '', notes[k]]);
+  });
+  Object.keys(settings).forEach(function(k) {
+    if (!notes.hasOwnProperty(k)) {
+      rows.push([k, String(settings[k]), '']);
+    }
+  });
+  s.getRange(1, 1, rows.length, 3).setValues(rows);
+  s.getRange(1, 1, 1, 3).setFontWeight('bold').setBackground('#f3edf7');
+}
+
+function writeDocsSheet_(ss, docs) {
+  const s = ss.getSheetByName(SHEET_DOCS);
+  s.clearContents();
+  const rows = [['id', 'category', 'fy', 'title', 'subtitle', 'url', 'badge', 'featured_home']];
+  docs.forEach(function(d, idx) {
+    if (!d.title &amp;&amp; !d.url) return;
+    rows.push([
+      String(d.id || ('doc-' + (idx + 1))),
+      String(d.category || 'forms'),
+      String(d.fy || '2570'),
+      String(d.title || ''),
+      String(d.subtitle || ''),
+      String(d.url || ''),
+      String(d.badge || 'เปิดเอกสาร'),
+      d.featured_home ? 'TRUE' : 'FALSE'
+    ]);
+  });
+  s.getRange(1, 1, rows.length, 8).setValues(rows);
+  s.getRange(1, 1, 1, 8).setFontWeight('bold').setBackground('#f3edf7');
+}
+
+function writeStaffSheet_(ss, staffList) {
+  const s = ss.getSheetByName(SHEET_STAFF);
+  s.clearContents();
+  const rows = [['no', 'name', 'department', 'workgroup']];
+  staffList.forEach(function(p, idx) {
+    const name = sanitizeNoEmail_(p.name);
+    if (!name) return;
+    rows.push([
+      String(p.no || (idx + 1)),
+      name,
+      sanitizeNoEmail_(p.dept || p.department || ''),
+      sanitizeNoEmail_(p.group || p.workgroup || '')
+    ]);
+  });
+  s.getRange(1, 1, rows.length, 4).setValues(rows);
+  s.getRange(1, 1, 1, 4).setFontWeight('bold').setBackground('#f3edf7');
+}
+
+function touchUpdatedDate_(ss) {
+  const months = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+  const now = new Date();
+  const thaiDate = now.getDate() + ' ' + months[now.getMonth()] + ' ' + (now.getFullYear() + 543);
+  const s = ss.getSheetByName(SHEET_SETTINGS);
+  const rows = s.getDataRange().getValues();
+  for (let i = 1; i &lt; rows.length; i++) {
+    if (String(rows[i][0]) === 'updated_date') {
+      s.getRange(i + 1, 2).setValue(thaiDate);
+      return;
+    }
+  }
+  s.appendRow(['updated_date', thaiDate, 'วันที่อัปเดตข้อมูลล่าสุด']);
+}
+</pre>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ws-footer">
+      <div><strong>งานแผนงาน โรงเรียนพิษณุโลกพิทยาคม</strong> · สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาพิษณุโลก อุตรดิตถ์</div>
+      <div style="margin-top:4px">
+        ติดต่อ: <a href="mailto:planning.pp64@gmail.com">planning.pp64@gmail.com</a>
+        · <a href="http://www.pp.ac.th/ppweb/index2.php" target="_blank" rel="noopener">เว็บโรงเรียน</a>
+        · ข้อมูลล่าสุด <span id="txtUpdatedMobile">23 พฤศจิกายน 2569</span>
+      </div>
+      <div>
+        <button type="button" class="admin-open-btn" data-goto="admin">จัดการข้อมูลเว็บ (สำหรับทีมแผน)</button>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<script id="site-data" type="application/json">{"updated_at": "23 พฤศจิกายน 2569", "settings": {"site_title": "งานแผนงาน โรงเรียนพิษณุโลกพิทยาคม", "affiliation": "สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาพิษณุโลก อุตรดิตถ์", "contact_email": "planning.pp64@gmail.com", "ppksar_url": "http://161.82.218.12/ppksar", "status_70_url": "https://script.google.com/a/macros/pp.ac.th/s/AKfycbx7a1-gH2RMif03G1YDusNGbfIBUksTs5-tJw7QkGK1xWCC0V-dG3Es2-t_MChcKoET/exec", "school_web_url": "http://www.pp.ac.th/ppweb/index2.php", "fy_override": "", "spreadsheet_id": "1BIRsO9rDHGSzYljjPZgdBGvRi4fYXIFs3T1SvQvTh5o", "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1BIRsO9rDHGSzYljjPZgdBGvRi4fYXIFs3T1SvQvTh5o/edit", "apps_script_project_url": "https://script.google.com/u/0/home/projects/1ThWPvrr4NhTz_vCtWdRPkvmda6p9Ol8qS5KdexJDbDXDxDZLrqSHtLL6/edit", "apps_script_url": "https://script.google.com/macros/s/AKfycbzA_8eXDsJ8OGm823jgDq5RTvhhzdfPn7TCPy3Qqd8-dVsmEUpWOUmWposEWbVsJxpSPQ/exec", "sheet_csv_urls": {"documents": "", "staff": ""}}, "documents": [{"id": "plan-2570-digital", "category": "เล่มแผน", "fy": "2570", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2570 (ฉบับปรับปรุง พ.ย. 2569)", "subtitle": "รหัสกิจกรรม 70-001 ถึง 70-239 · 9 โครงการ 6 กลยุทธ์ · งบประมาณรวม 55,736,777.63 บาท (171 หน้า)", "badge": "PDF ฉบับจริง", "url": "https://drive.google.com/file/d/1tUibuagUGwknwlfLet-PxF9Tw94IK65X/view", "featured_home": true}, {"id": "plan-2570-docx", "category": "เล่มแผน", "fy": "2570", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2570 (ฉบับเอกสาร Word)", "subtitle": "ไฟล์ต้นฉบับแก้ไขได้บน Google Docs สำหรับอ้างอิงรายละเอียดโครงการและตารางงบประมาณ", "badge": "Google Docs", "url": "https://docs.google.com/document/d/1dB2VGa93Wjb-PrRmipMOm7fsAQemGSMZ/edit", "featured_home": false}, {"id": "plan-dev-2566-2570", "category": "แผนพัฒนา", "fy": "2570", "title": "แผนพัฒนาคุณภาพการศึกษา พ.ศ. 2566–2570", "subtitle": "กรอบกลยุทธ์ เป้าประสงค์ และตัวชี้วัดระยะ 5 ปี ของโรงเรียนพิษณุโลกพิทยาคม", "badge": "PDF", "url": "https://drive.google.com/file/d/1CwdG-FUGGHCZS3J1n1A-lBHK_cJ6Ft7z/view", "featured_home": false}, {"id": "plan-2569", "category": "เล่มแผน", "fy": "2569", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2569 (รวมไฟล์แผน 69)", "subtitle": "เอกสารแผนปฏิบัติการและรายละเอียดงบประมาณรายกิจกรรม ปีงบประมาณ 2569", "badge": "PDF", "url": "https://drive.google.com/file/d/1Ce7zxTY-ocFNFQq91uHNlHYF5ZhQpMSF/view", "featured_home": false}, {"id": "plan-2568", "category": "เล่มแผน", "fy": "2568", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2568 (ฉบับมีลายเซ็น)", "subtitle": "เล่มแผนปฏิบัติการประจำปีงบประมาณ 2568 ที่ผ่านการอนุมัติและลงนามแล้ว", "badge": "PDF ลงนาม", "url": "https://drive.google.com/file/d/1x140_1lmgmkDOaeYsbHS1v1k46Ymf7Aq/view", "featured_home": false}, {"id": "plan-2568-basic", "category": "แผนพัฒนา", "fy": "2568", "title": "แผนบริหารการศึกษาขั้นพื้นฐาน ปีงบประมาณ 2568", "subtitle": "เอกสารกรอบการบริหารจัดการศึกษาขั้นพื้นฐานของสถานศึกษา", "badge": "PDF", "url": "https://drive.google.com/file/d/1tzuMHUVVSmX1QDOHbao23qyzliRHYnJX/view", "featured_home": false}, {"id": "plan-2567", "category": "เล่มแผน", "fy": "2567", "title": "เล่มแผนปฏิบัติการประจำปีงบประมาณ 2567", "subtitle": "เอกสารแผนปฏิบัติการประจำปีงบประมาณ 2567 สำหรับอ้างอิงย้อนหลัง", "badge": "PDF", "url": "https://drive.google.com/file/d/1VVxlYQTEbudJ3UV6XJW6SsMjo36SbDdb/view", "featured_home": false}, {"id": "forms-folder-main", "category": "แบบฟอร์ม", "fy": "2570", "title": "โฟลเดอร์รวมเอกสารแบบฟอร์มการจัดทำโครงการ/กิจกรรม", "subtitle": "แบบฟอร์มขออนุมัติโครงการ บันทึกข้อความขออนุญาตจัดกิจกรรม และตัวอย่างการเขียนโครงการ", "badge": "โฟลเดอร์ Drive", "url": "https://drive.google.com/drive/folders/1fqIA26K-rTo34g6mfS-m1J3CCC6nEgnk", "featured_home": true}, {"id": "form-pm3a-docx", "category": "แบบฟอร์ม", "fy": "2570", "title": "แบบฟอร์ม PM3a — รายงานผลการดำเนินงานกิจกรรมตามโครงการ (.docx)", "subtitle": "แบบฟอร์มรายงานผลและสรุปปิดโครงการ/กิจกรรมเมื่อดำเนินการเสร็จสิ้น (ดาวน์โหลดไปพิมพ์แก้ไขได้)", "badge": "ไฟล์ Word", "url": "https://docs.google.com/document/d/10GKJdAHQnj8KFIAPNMxohYHmm5Y-t87o/edit", "featured_home": true}, {"id": "form-canva-workshop", "category": "แบบฟอร์ม", "fy": "2569", "title": "เอกสารประกอบการอบรมการเขียนโครงการและการสรุปโครงการ", "subtitle": "แนวทางการเขียนหลักการและเหตุผล วัตถุประสงค์ ตัวชี้วัดความสำเร็จ และการสรุปผล", "badge": "สไลด์อบรม", "url": "https://www.canva.com/design/DAGSIeMw0K0/n6m9KhfO3u62esIsa6trxQ/view", "featured_home": false}, {"id": "manual-pm1-full", "category": "คู่มือ", "fy": "2570", "title": "คู่มือ PM1 — การสร้างกิจกรรม การเชื่อมโยงตัวชี้วัด และประเด็นการพิจารณา", "subtitle": "ขั้นตอนการตั้งกิจกรรมในระบบ ppksar การผูกตัวชี้วัดให้ปลั๊กเป็นสีเขียว และการตรวจสอบข้อมูลข้อ 6–9", "badge": "PDF คู่มือหลัก", "url": "https://drive.google.com/file/d/1FX7_ZCn0ERj1Zl8EoT432_bISAODCYYk/view", "featured_home": true}, {"id": "manual-pm1-short", "category": "คู่มือ", "fy": "2570", "title": "คู่มือ PM1 (ฉบับย่อ) — ขั้นตอนการสร้างกิจกรรมในโปรแกรมแผนงาน", "subtitle": "สรุปขั้นตอนการเพิ่มกิจกรรมใหม่และกรอกข้อมูลพื้นฐานในระบบแผนงาน", "badge": "PDF", "url": "https://drive.google.com/file/d/1elga7DgUvUe8DN9MNEZ7LOrtTG0RBEiW/view", "featured_home": false}, {"id": "manual-pm3", "category": "คู่มือ", "fy": "2570", "title": "คู่มือ PM3 — การประเมินตัวชี้วัดและสรุป (ปิด) กิจกรรมในระบบ", "subtitle": "วิธีกรอกผลการดำเนินงานและกดบันทึกปิดกิจกรรมในระบบ ppksar (จำเป็นสำหรับข้อ 8 การอนุมัติปีถัดไป)", "badge": "PDF", "url": "https://drive.google.com/file/d/1T96CSbh_Uv5tpP-CicOMPslofoFGyhAw/view", "featured_home": true}, {"id": "manual-folder-all", "category": "คู่มือ", "fy": "2570", "title": "โฟลเดอร์รวมคู่มือการใช้งานโปรแกรมแผนงานทั้งหมด (PM1 – PM3)", "subtitle": "คลังเก็บไฟล์คู่มือและแบบฟอร์มรายงานผลใน Google Drive ของงานแผนงาน", "badge": "โฟลเดอร์ Drive", "url": "https://drive.google.com/drive/folders/1qY60JW0RI28OJVLi1DBDuF9CvFGqwwMD", "featured_home": false}, {"id": "reg-subsidy-2566-2569", "category": "ระเบียบ", "fy": "2570", "title": "แนวทางการดำเนินงานโครงการสนับสนุนค่าใช้จ่ายในการจัดการศึกษา (เงินอุดหนุนฯ)", "subtitle": "หลักเกณฑ์การใช้งบเงินอุดหนุนรายหัว และเงินกิจกรรมพัฒนาผู้เรียน (วิชาการ · คุณธรรม · ลูกเสือ · ทัศนศึกษา · ICT)", "badge": "PDF ระเบียบ", "url": "https://drive.google.com/file/d/1JcbPzHXryw7Xij6ocRUS_ACm6cqZWvcs/view", "featured_home": true}], "staff": [{"name": "รองผู้บริหาร", "dept": "ผู้บริหาร", "group": "ผู้บริหาร"}, {"name": "นางสาวทิพยรัตน์ ส่งประเสริฐ", "dept": "ผู้บริหาร", "group": "กลุ่มบริหารงานงบประมาณ, กลุ่มบริหารงานบุคคล"}, {"name": "นางสาวรัตติกาล บัวสิงคำ", "dept": "ผู้บริหาร", "group": "กลุ่มบริหารงานวิชาการ"}, {"name": "นางสาวธันย์ญาธิป ฟองจางวาง", "dept": "ผู้บริหาร", "group": "กลุ่มบริหารทั่วไป"}, {"name": "นางสาวชลนิชา แสงสว่าง", "dept": "บรรณารักษ์", "group": "กลุ่มบริหารงานวิชาการ"}, {"name": "นางสาววรางคณา จันทร์คำ", "dept": "บรรณารักษ์", "group": "กลุ่มบริหารงานวิชาการ"}, {"name": "นางสาวเบญจพร คำรักษ์", "dept": "กิจกรรมแนะแนว", "group": "กลุ่มบริหารงานวิชาการ"}, {"name": "นางศมนพนัช สามารถ", "dept": "กิจกรรมแนะแนว", "group": "กลุ่มบริหารงานวิชาการ"}, {"name": "นางพรเพ็ญ อ่อนช่างเหล็ก", "dept": "กิจกรรมแนะแนว", "group": "กลุ่มบริหารงานวิชาการ"}, {"name": "นางสุธีรา ดังดี", "dept": "กิจกรรมแนะแนว", "group": "กลุ่มบริหารงานวิชาการ, กิจกรรมแนะแนว"}, {"name": "นางเพ็ญนภา วรเลิศ", "dept": "กิจกรรมแนะแนว", "group": "กิจกรรมแนะแนว, กลุ่มบริหารงานวิชาการ"}, {"name": "นางสาวชนกานต์ ทรดล", "dept": "กลุ่มสาระฯสุขศึกษา พลศึกษา", "group": "กลุ่มสาระฯสุขศึกษา พลศึกษา"}, {"name": "นายศรวัณ เเตงกูล", "dept": "กลุ่มสาระฯสุขศึกษา พลศึกษา", "group": "กลุ่มสาระฯสุขศึกษา พลศึกษา"}, {"name": "นางสาววัลลภา อินยศ", "dept": "กลุ่มสาระฯสุขศึกษา พลศึกษา", "group": "กลุ่มสาระฯสุขศึกษา พลศึกษา"}, {"name": "นายสุวัฒน์ กลิ่นชาวนา", "dept": "กลุ่มสาระฯสุขศึกษา พลศึกษา", "group": "กลุ่มสาระฯสุขศึกษา พลศึกษา, งานระดับชั้น ม.6, กลุ่มบริหารงานกิจการนักเรียน"}, {"name": "นางสาวกรุณา ประทานชัย", "dept": "กลุ่มสาระฯสุขศึกษา พลศึกษา", "group": "กลุ่มสาระฯสุขศึกษา พลศึกษา"}, {"name": "นางนราวรรณ พันธ์แก้ว", "dept": "กลุ่มสาระฯสุขศึกษา พลศึกษา", "group": "กลุ่มสาระฯสุขศึกษา พลศึกษา"}, {"name": "นายชัชวาลย์ คำโสกเชือก", "dept": "กลุ่มสาระฯสุขศึกษา พลศึกษา", "group": "กลุ่มสาระฯสุขศึกษา พลศึกษา, กลุ่มบริหารงานวิชาการ"}, {"name": "นางชไมพร จันทนา", "dept": "กลุ่มสาระฯสังคมศึกษาฯ", "group": "กลุ่มสาระฯสังคมศึกษาฯ"}, {"name": "นายณัฐวัตร โนราช", "dept": "กลุ่มสาระฯสังคมศึกษาฯ", "group": "กลุ่มสาระฯสังคมศึกษาฯ"}, {"name": "นางเนาวรัตน์ ศิริวัฒน์", "dept": "กลุ่มสาระฯสังคมศึกษาฯ", "group": "กลุ่มสาระฯสังคมศึกษาฯ"}, {"name": "นายเฉลิมศักดิ์ ใจบาน", "dept": "กลุ่มสาระฯสังคมศึกษาฯ", "group": "กลุ่มสาระฯสังคมศึกษาฯ, กลุ่มบริหารงานกิจการนักเรียน"}, {"name": "นางสาววรรณทิภา สุขเกษม", "dept": "กลุ่มสาระฯสังคมศึกษาฯ", "group": "กลุ่มสาระฯสังคมศึกษาฯ, กลุ่มงานบริหารงานทั่วไป"}, {"name": "นางสาวกฤษณา อำนัดมาตย์", "dept": "กลุ่มสาระฯสังคมศึกษาฯ", "group": "กลุ่มสาระฯสังคมศึกษาฯ"}, {"name": "นายทศพล อินน้ำคบ", "dept": "กลุ่มสาระฯสังคมศึกษาฯ", "group": "กลุ่มสาระฯสังคมศึกษาฯ, กลุ่มงานบริหารงานทั่วไป"}, {"name": "นางธนิดา ลักษณ์รุจิ", "dept": "กลุ่มสาระฯสังคมศึกษาฯ", "group": "กลุ่มสาระฯสังคมศึกษาฯ, กลุ่มกิจการนักเรียน"}, {"name": "นางสาวคณิ​ติน​อภิญญา​ เอี่ยม​สวัสดิ์​", "dept": "กลุ่มสาระฯสังคมศึกษาฯ", "group": "กลุ่มสาระฯสังคมศึกษาฯ, กิจกรรมพัฒนาผู้เรียน, กลุ่มบริหารงานกิจการนักเรียน"}, {"name": "นางวรวรรณ เทพคุณ", "dept": "กลุ่มสาระฯสังคมศึกษาฯ", "group": "กลุ่มสาระฯสังคมศึกษาฯ"}, {"name": "นางสรัญญา ไฝทอง", "dept": "กลุ่มสาระฯสังคมศึกษาฯ", "group": "กลุ่มสาระฯสังคมศึกษาฯ"}, {"name": "นางลักษมี จันทร์เวชศิลป์", "dept": "กลุ่มสาระฯสังคมศึกษาฯ", "group": "กลุ่มบริหารงานบุคคล, กลุ่มสาระฯสังคมศึกษาฯ"}, {"name": "นางสาวพิมทอง อิ่นแก้ว", "dept": "กลุ่มสาระฯสังคมศึกษาฯ", "group": "กลุ่มบริหารงานกิจการนักเรียน"}, {"name": "นางสาวเจนจิรา โคกพุ่ม", "dept": "กลุ่มสาระฯสังคมศึกษาฯ", "group": "กลุ่มบริหารงานงบประมาณ, กลุ่มสาระฯสังคมศึกษาฯ"}, {"name": "นายณัฏฐวัฒน์ จันทรโท", "dept": "กลุ่มสาระฯสังคมศึกษาฯ", "group": "กลุ่มบริหารงานงบประมาณ"}, {"name": "นายสัณห์ชัย ทรงเจริญ", "dept": "กลุ่มสาระฯศิลปะ", "group": "กลุ่มสาระฯศิลปะ"}, {"name": "นางสาวธนวรรณ เจริญภัทราวุฒิ", "dept": "กลุ่มสาระฯศิลปะ", "group": "กลุ่มสาระฯศิลปะ"}, {"name": "นางสาวทัตพิชา ประภากร", "dept": "กลุ่มสาระฯศิลปะ", "group": "กลุ่มสาระฯศิลปะ, กลุ่มบริหารงานกิจการนักเรียน"}, {"name": "นางสาวชินานาง วงศ์หิรัญ", "dept": "กลุ่มสาระฯศิลปะ", "group": "กลุ่มสาระฯศิลปะ, กลุ่มงานบริหารงานทั่วไป"}, {"name": "นายกำพล​ เนตรเชย", "dept": "กลุ่มสาระฯศิลปะ", "group": "กลุ่มสาระฯศิลปะ"}, {"name": "นางสาวอโณทัย เพิ่มลี้วิริยะกุล", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, งานศูนย์คอมพิวเตอร์, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ต้น, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ปลาย"}, {"name": "นางกาญจนา ธรรมอัน", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, กลุ่มงานบริหารงานทั่วไป"}, {"name": "นายภวัต กมลศิลป์", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ปลาย"}, {"name": "นางอนัญญา แก้วพินิจ", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ปลาย, กลุ่มบริหารงานกิจการนักเรียน, กิจกรรมพัฒนาผู้เรียน"}, {"name": "นางสาวอภิวัลย์ มาสชรัตน์", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ปลาย"}, {"name": "นางปาริฉัตร ม่วงปัทม์", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ปลาย"}, {"name": "นางสาวสุพาณี แสงสิน", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ปลาย"}, {"name": "นางสาวพรวดี ใจเที่ยงธรรม", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นางสาวอมินตรา แสงเมือง", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นางสาวสุวนันท์ อาจวาที", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, กลุ่มบริหารงานวิชาการ"}, {"name": "นางสาวพนิดา โสภา", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นางนิสยา ภูพิชิต", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นายกิตติพงษ์ เพชรทอง", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, งานระดับชั้น ม.5"}, {"name": "นายวิฑูรย์ เต๋มา", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ปลาย, งานระดับชั้น ม.4"}, {"name": "นางกิ่งแก้ว บรรลุผลสกุล", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ปลาย"}, {"name": "นายกัมปนาท สุขนิตย์", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นายพงฤทธิ์ เทพคุณ", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นางสาวธีรารัตน์ ทองงามดี", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, กลุ่มบริหารงานวิชาการ, ห้องเรียนพิเศษ พสวท."}, {"name": "นางสาวธัญญรัตน์ บุญธัญกรณ์", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, งานระดับชั้น ม.2"}, {"name": "นางวาสนา กันแตง", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นางนันทิยา เรือนแพร", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นางสาวอรสา พุ่มไม้", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นางจันทนา ถิ่นจอม", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นางเบญญาภา แสนเมือง", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นายขวัญ ตาใจ", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นายวีรพล อินพลอย", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นางสาวฐิติพร แม่งมา", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, กลุ่มบริหารงานงบประมาณ, รายจ่ายประจำ"}, {"name": "นางอรอนงค์ มั่นคง", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, กลุ่มบริหารงานวิชาการ"}, {"name": "นายพิริยะ ตระกูลสว่าง", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นางวิไลวรรณ อุทธตรี", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นายนิมิตร เดชสกุลรัตน์", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นายยุทธนา อยู่ป้อม", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นางสาวมลชยา หวานชะเอม", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "นายจรูญ เถื่อนกูล", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, งานระดับชั้น ม.3"}, {"name": "นางธัญชนก​ มีพยุง", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ต้น, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ปลาย, งานศูนย์คอมพิวเตอร์"}, {"name": "นางสาวนพวรรณ คงเพ็ง", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, กลุ่มบริหารงานบุคคล"}, {"name": "นายยุทธนา อยู่ป้อม", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มบริหารงานกิจการนักเรียน"}, {"name": "นางสาวบุษบา เพ็งผ่อง", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มบริหารงานวิชาการ"}, {"name": "นางพิกุล คำภีระปาวงค์", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มบริหารงานวิชาการ, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ปลาย"}, {"name": "นางพัชรินทร์ สมฤทัย", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ต้น, กลุ่มบริหารงานวิชาการ"}, {"name": "นางมณทิรา กันมา", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มบริหารงานงบประมาณ"}, {"name": "นายปิยทัศน์ คำน้อม", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มบริหารงานงบประมาณ, รายจ่ายประจำ"}, {"name": "นางสาวรุ่งนภา น่วมน้อย", "dept": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี", "group": "กลุ่มบริหารงานงบประมาณ"}, {"name": "นางสาวอัญธิษฐา กาญจนไพโรจน์", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มสาระฯภาษาไทย"}, {"name": "นางสาวอาริยา ชูช่วย", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มสาระฯภาษาไทย, กลุ่มบริหารงานบุคคล"}, {"name": "นายวิชญ์ วิชญปัญญากุล", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มสาระฯภาษาไทย"}, {"name": "นางสาวพนมพร ชมภูพาน", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มสาระฯภาษาไทย"}, {"name": "นางเสาวจี เสาร์สุข", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มสาระฯภาษาไทย"}, {"name": "นางสาวลฎาภา เผือกอ่อน", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มสาระฯภาษาไทย"}, {"name": "นางสาวน้ำเพชร เอียดแก้ว", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มสาระฯภาษาไทย"}, {"name": "นางสุพัตรา พิมพ์กะภีร์", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มสาระฯภาษาไทย, กลุ่มงานบริหารงานทั่วไป"}, {"name": "นายธีรพล ม่วงปัทม์", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มสาระฯภาษาไทย, งานระดับชั้น ม.1"}, {"name": "นางสาวนิตยา เอี่ยมทองอินทร์", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มสาระฯภาษาไทย, กลุ่มกิจการนักเรียน, งานระดับชั้น ม.4"}, {"name": "นางธนันณัฐ ศัจนันท์วรกุล", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มสาระฯภาษาไทย"}, {"name": "นางวลัย สีดา", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มสาระฯภาษาไทย"}, {"name": "นางวรฉัน พึ่งม่วงศุภสิน", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มสาระฯภาษาไทย, กลุ่มบริหารงานวิชาการ"}, {"name": "นายอนุสรณ์ มีสุข", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มสาระฯภาษาไทย"}, {"name": "นายวิทยา พุ่มยิ้ม", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มบริหารงานกิจการนักเรียน"}, {"name": "นางสาวจิตรลดา ศักดิ์นิติจารุชัย", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มบริหารงานวิชาการ"}, {"name": "นางสาวธิดารัตน์ ม่วงยิ้ม", "dept": "กลุ่มสาระฯภาษาไทย", "group": "กลุ่มบริหารงานวิชาการ"}, {"name": "นางสาวชุติกาญจน์ กลิ่นทับ", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ, ห้องเรียนพิเศษภาษาจีน, ห้องเรียนพิเศษ EP, รายจ่ายประจำ"}, {"name": "นางสาวศรีสกุล วังซ้าย", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ, ห้องเรียนพิเศษภาษาจีน"}, {"name": "นางสาวนกแก้ว คล้ายสอน", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ, กลุ่มงานบริหารงานทั่วไป"}, {"name": "นางสาวภัทรวดี ฉ่ำน้อย", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ"}, {"name": "นายประเสริฐพร เทียนแดง", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ"}, {"name": "นางสาวพลอยณัชชา จิราธิปภูริวัฒน์", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ, ห้องเรียนพิเศษภาษาจีน"}, {"name": "นา​งจิราศิลป์​ ศรีอำไพ​", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ, กลุ่มงานบริหารงานทั่วไป"}, {"name": "นางสาวนัฐกานต์ ชงัดเวช", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ"}, {"name": "นางสาวศุภาพิชญ์ เจริญรัตนศิลป์", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ"}, {"name": "นางน้ำฝน จันทราช", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ"}, {"name": "นางสาวนาถลดา ยอดเพชร", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ"}, {"name": "นางสาวรัตน์ชา โล่ห์ประเสริฐ", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ, กลุ่มงานบริหารงานทั่วไป"}, {"name": "นางสาวสุภารัตน์ กุลคง", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ"}, {"name": "นางสาวนารีรัตน์ พินทอง", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ"}, {"name": "นางมาลัยสวรรค์ สุนเกตุทรัช", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ"}, {"name": "นางสาวอาภาภรณ์ ธาดาภาคย์", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ"}, {"name": "นางยุพา สมบุญมี", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ"}, {"name": "นางสาววันดี เที่ยงเรือง", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ"}, {"name": "นางสาวอภิชญาน์ หอมสะอาด", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ"}, {"name": "นางพิมพ์ภัทรา ธนัชพุฒิพัฒน์", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ"}, {"name": "นายสันทัด คงเนตร", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ, กลุ่มบริหารงานวิชาการ"}, {"name": "นางกันยพร ณ อุบล", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ, กลุ่มบริหารงานกิจการนักเรียน"}, {"name": "นางสาวศิริพรรณ ศิริลักษณ์", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ"}, {"name": "นายเอกภพ กาศสมบูรณ์", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มสาระฯภาษาต่างประเทศ"}, {"name": "นางอรอานันท์ บุญรอด", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มบริหารงานกิจการนักเรียน"}, {"name": "นายขวัญชัย ตระกูลเชิดชูชัย", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มบริหารงานวิชาการ, ห้องเรียนพิเศษ EP"}, {"name": "นางสาวชุติกาญจน์ กลิ่นทับ", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มงานบริหารงานทั่วไป"}, {"name": "นางเสาวนีย์ ปรีชานนท์", "dept": "กลุ่มสาระฯภาษาต่างประเทศ", "group": "กลุ่มบริหารงานงบประมาณ"}, {"name": "นางอังษณานันท์ อินทรชัย", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "สำนักงานอำนวยการ, กลุ่มสาระฯคณิตศาสตร์, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ต้น"}, {"name": "นายนิรวิทธ์ นกพึ่ง", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "สำนักงานอำนวยการ"}, {"name": "นางปาณิศรา มโนตั้งวรพันธุ์", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "สำนักงานอำนวยการ"}, {"name": "นายอภิชาติ เถื่อนกูล", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์"}, {"name": "นายชัชพงษ์ โชคพนารัตน์", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์"}, {"name": "นายนิรวิทธ์ นกพึ่ง", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์"}, {"name": "นางสาวชุติมา นาคสกุล", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ต้น, กลุ่มบริหารงานวิชาการ"}, {"name": "นายสุชน เด็จใจทัด", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์, กลุ่มบริหารงานวิชาการ"}, {"name": "นางสาวพัชราภรณ์ ทองนาค", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์"}, {"name": "นางสาวกนกวรรณ หงษ์เงิน", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ต้น"}, {"name": "นางสาวนันทวรรณ เอมโอช", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ต้น"}, {"name": "นายคฑาไชย ทักษ์สิทธา", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ต้น"}, {"name": "นางสุพรรณิการ์ ธนาบูรณศักดิ์", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ต้น, กลุ่มงานบริหารงานทั่วไป"}, {"name": "นายชลชรัส นุกอง", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์"}, {"name": "นางสาวสุจินต์ หอมเนียม", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ต้น, กลุ่มบริหารงานบุคคล"}, {"name": "นางนิจวรรณ โพธิ์ทอง", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ต้น"}, {"name": "นายวรา สามนทา", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์"}, {"name": "นางปรารถนา มีสุข", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ต้น, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ปลาย"}, {"name": "นางชุดาภรณ์ อ้อมแก้ว", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์"}, {"name": "นายสมหมาย ป้องสวย", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มสาระฯคณิตศาสตร์, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ต้น, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ปลาย"}, {"name": "นายสุรินทร์ชยุตม์ บุญประสพ", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มบริหารงานวิชาการ"}, {"name": "นางสาวพรรณธิภา บุญศิลป์", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มบริหารงานวิชาการ"}, {"name": "นายชัชพงษ์ โชคพนารัตน์", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มบริหารงานงบประมาณ"}, {"name": "นายสิทธิพล เขียวชะอุ่ม", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มบริหารงานงบประมาณ"}, {"name": "นายอโณชัย พุ่มสอาด", "dept": "กลุ่มสาระฯการงานอาชีพ", "group": "กลุ่มสาระฯการงานอาชีพ"}, {"name": "นายคเณศ วะปะแก้ว", "dept": "กลุ่มสาระฯการงานอาชีพ", "group": "กลุ่มสาระฯการงานอาชีพ"}, {"name": "นายสิทธิชัย แสนนิทา", "dept": "กลุ่มสาระฯการงานอาชีพ", "group": "กลุ่มสาระฯการงานอาชีพ, กลุ่มงานบริหารงานทั่วไป"}, {"name": "นางเนตรนภิศ มั่นเจริญศิริ", "dept": "กลุ่มสาระฯการงานอาชีพ", "group": "กลุ่มสาระฯการงานอาชีพ, กลุ่มบริหารงานกิจการนักเรียน"}, {"name": "นางสุจิตรา เสนานุช", "dept": "กลุ่มสาระฯการงานอาชีพ", "group": "กลุ่มสาระฯการงานอาชีพ"}, {"name": "นายวีรพล สุวรรณไตรย์", "dept": "กลุ่มสาระฯการงานอาชีพ", "group": "กลุ่มสาระฯการงานอาชีพ"}, {"name": "ว่าที่ ร.ต.เลาะ เทียมเมฆ", "dept": "กลุ่มสาระฯการงานอาชีพ", "group": "กลุ่มสาระฯการงานอาชีพ, กลุ่มบริหารงานกิจการนักเรียน"}, {"name": "นางนันธวัลย์ ทองอ่ำ", "dept": "กลุ่มสาระฯการงานอาชีพ", "group": "กลุ่มบริหารงานงบประมาณ, รายจ่ายประจำ"}, {"name": "นางสาวเบญจรัตน์ ตระกูลเชิดชูชัย", "dept": "-", "group": "ห้องเรียนพิเศษ EP"}, {"name": "นางสาวทิวาพร อั่วหงวน", "dept": "-", "group": "กลุ่มบริหารงานกิจการนักเรียน"}, {"name": "นางภริตพร พึ่งไชย", "dept": "-", "group": "กลุ่มบริหารงานกิจการนักเรียน"}, {"name": "นางสาวขนิษฐา กริมหนู", "dept": "-", "group": "กลุ่มงานบริหารงานทั่วไป"}, {"name": "ผู้ดูแลระบบ", "dept": "-", "group": "กลุ่มบริหารงานงบประมาณ"}, {"name": "แผนงาน", "dept": "-", "group": "กลุ่มบริหารงานงบประมาณ"}, {"name": "นางสาวพรปวีณ์ จ้อยเชื้อ", "dept": "กลุ่มสาระฯสุขศึกษา พลศึกษา", "group": "กลุ่มสาระฯสุขศึกษา พลศึกษา"}, {"name": "วิชาการ", "dept": "", "group": "กลุ่มบริหารงานวิชาการ"}, {"name": "หัวหน้ากิจการนักเรียน", "dept": "", "group": "กลุ่มบริหารงานกิจการนักเรียน, กิจกรรมพัฒนาผู้เรียน, งานระดับชั้น ม.1, งานระดับชั้น ม.2, งานระดับชั้น ม.3, งานระดับชั้น ม.4, งานระดับชั้น ม.5, งานระดับชั้น ม.6"}, {"name": "หัวหน้าวิชาการ", "dept": "", "group": "กลุ่มบริหารงานวิชาการ, กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, กลุ่มสาระฯคณิตศาสตร์, ห้องเรียนพิเศษภาษาจีน, กลุ่มสาระฯภาษาไทย, กลุ่มสาระฯสังคมศึกษาฯ, กลุ่มสาระฯการงานอาชีพ, กลุ่มสาระฯสุขศึกษา พลศึกษา, กลุ่มสาระฯศิลปะ, ห้องสมุด, กิจกรรมแนะแนว, กลุ่มสาระฯภาษาต่างประเทศ, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ต้น, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ปลาย, ห้องเรียนพิเศษ พสวท., ห้องเรียนพิเศษ EP, กิจกรรมพัฒนาผู้เรียน, งานศูนย์คอมพิวเตอร์"}, {"name": "นายธีรพล ท้วมทอง", "dept": "กลุ่มสาระฯคณิตศาสตร์", "group": "กลุ่มบริหารงานวิชาการ, กลุ่มสาระฯคณิตศาสตร์"}, {"name": "นายธัชชัย กลิ่นทับ", "dept": "", "group": "งานระดับชั้น ม.6"}, {"name": "นางสาวธารีรัตน์ สุวรรณ", "dept": "ผู้บริหาร", "group": "กลุ่มบริหารทั่วไป"}, {"name": "นางสาวธารีรัตน์ สุวรรณ", "dept": "ผู้บริหาร", "group": "กลุ่มบริหารทั่วไป"}, {"name": "นางสาวทิพยรัตน์ ส่งประเสริฐ", "dept": "ผู้บริหาร", "group": "กลุ่มบริหารงานงบประมาณ, กลุ่มบริหารงานบุคคล"}, {"name": "นางสาวรัตติกาล บัวสิงคำ", "dept": "ผู้บริหาร", "group": "กลุ่มกิจการนักเรียน, กิจกรรมพัฒนาผู้เรียน, งานระดับชั้น ม.1, งานระดับชั้น ม.2, งานระดับชั้น ม.3, งานระดับชั้น ม.4, งานระดับชั้น ม.5, งานระดับชั้น ม.6"}, {"name": "นางสาวธันย์ญาธิป ฟองจางวาง", "dept": "ผู้บริหาร", "group": "กลุ่มบริหารงานวิชาการ, กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี, กลุ่มสาระฯคณิตศาสตร์, กลุ่มสาระฯภาษาต่างประเทศ, ห้องเรียนพิเศษภาษาจีน, กลุ่มสาระฯภาษาไทย, กลุ่มสาระฯสังคมศึกษาฯ, กลุ่มสาระฯการงานอาชีพ, กลุ่มสาระฯสุขศึกษา พลศึกษา, กลุ่มสาระฯศิลปะ, ห้องสมุด, กิจกรรมแนะแนว, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ต้น, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ปลาย, ห้องเรียนพิเศษ พสวท., ห้องเรียนพิเศษ EP, งานศูนย์คอมพิวเตอร์, กิจกรรมพัฒนาผู้เรียน"}, {"name": "นางสาวธารีรัตน์ สุวรรณ", "dept": "ผู้บริหาร", "group": "กลุ่มบริหารทั่วไป"}, {"name": "หัวหน้างานบุคคล", "dept": "", "group": "กลุ่มบริหารงานบุคคล"}, {"name": "หัวหน้ากลุ่มสาระคณิตศาสตร์", "dept": "", "group": "กลุ่มสาระฯคณิตศาสตร์"}, {"name": "หัวหน้ากลุ่มสาระวิทยาศาสตร์และเทคโนโลยี", "dept": "", "group": "กลุ่มสาระฯวิทยาศาสตร์และเทคโนโลยี"}, {"name": "หัวหน้าห้องเรียนพิเศษวิทย์-คณิต-คอม", "dept": "", "group": "ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ต้น, ห้องเรียนพิเศษวิทย์-คณิต-คอม ม.ปลาย"}, {"name": "นางสาวรัฐภรณ์ ภู่ฤทธิ์", "dept": "-", "group": "สำนักงานอำนวยการ"}, {"name": "หัวหน้ากลุ่มสาระการเรียนรู้ศิลปะ", "dept": "กลุ่มสาระฯศิลปะ", "group": "กลุ่มสาระฯศิลปะ"}]}</script>
+<script>
+(function() {
+  var DATA = JSON.parse(document.getElementById('site-data').textContent);
+
+  /* 1. Client-side Fiscal Year & Timeline Calculation (Rule S-3: never stale even without rebuild) */
+  function updateFiscalTimeline() {
+    var FULL = ['ตุลาคม','พฤศจิกายน','ธันวาคม','มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน'];
+    var d = new Date(), y = d.getFullYear(), m = d.getMonth();
+    var start = new Date(m >= 9 ? y : y - 1, 9, 1);
+    var end = new Date(start.getFullYear() + 1, 9, 1);
+    var fy = (DATA.settings && DATA.settings.fy_override) ? Number(DATA.settings.fy_override) : (end.getFullYear() + 543);
+    var idx = (m + 3) % 12;
+    var frac = Math.max(0, Math.min(1, (d - start) / (end - start)));
+    var q = Math.floor(idx / 3) + 1;
+    var yyStart = String(fy - 1).slice(-2), yyEnd = String(fy).slice(-2);
+
+    document.getElementById('fyTitle').textContent = 'ปีงบ ' + fy;
+    document.getElementById('fyNow').textContent = 'เดือน' + FULL[idx] + ' · ไตรมาส ' + q + ' (เดือนที่ ' + (idx + 1) + '/12)';
+    document.getElementById('mStart').textContent = 'ต.ค. ' + yyStart;
+    document.getElementById('mMid').textContent = 'มี.ค. ' + yyEnd;
+    document.getElementById('mEnd').textContent = 'ก.ย. ' + yyEnd;
+    document.getElementById('done').style.width = (frac * 100).toFixed(1) + '%';
+    document.getElementById('dot').style.left = (frac * 100).toFixed(1) + '%';
+    return String(fy);
+  }
+  var currentFY = updateFiscalTimeline();
+
+  /* 2. Render Document Lists (Rule L-4c: highlight max year present in data) */
+  function esc(s) {
+    var d = document.createElement('div');
+    d.textContent = s || '';
+    return d.innerHTML;
+  }
+
+  function docRowHTML(doc, maxFy) {
+    var isCur = String(doc.fy) === String(maxFy);
+    var fyLabel = doc.fy ? ('ปีงบ ' + esc(doc.fy)) : 'ทั่วไป';
+    return '<a class="doc-row" href="' + esc(doc.url) + '" target="_blank" rel="noopener">' +
+      '<span class="doc-fy' + (isCur ? ' current' : '') + '">' + fyLabel + '</span>' +
+      '<span class="doc-main"><b>' + esc(doc.title) + '</b><small>' + esc(doc.subtitle) + '</small></span>' +
+      '<span class="doc-action">' + esc(doc.badge || 'เปิดเอกสาร') + '</span>' +
+      '</a>';
+  }
+
+  function renderCategoryGroupedByYear(containerId, categories) {
+    var docs = (DATA.documents || []).filter(function(d) {
+      return categories.indexOf(d.category) >= 0 && d.url;
+    });
+    var years = [];
+    docs.forEach(function(d) {
+      var y = d.fy || 'ไม่ระบุปี';
+      if (years.indexOf(y) < 0) years.push(y);
+    });
+    years.sort(function(a, b) { return String(b).localeCompare(String(a)); });
+    var maxFy = (DATA.settings && DATA.settings.fy_override) || years[0] || currentFY;
+
+    var html = '';
+    years.forEach(function(y) {
+      var isHighlight = String(y) === String(maxFy);
+      var groupDocs = docs.filter(function(d) { return (d.fy || 'ไม่ระบุปี') === y; });
+      if (years.length > 1 || y !== 'ไม่ระบุปี') {
+        html += '<div class="year-group-bar' + (isHighlight ? ' highlight' : '') + '">' +
+          '<span>ปีงบประมาณ ' + esc(y) + (isHighlight ? ' (ปีงบประมาณปัจจุบัน)' : '') + '</span>' +
+          '<span>' + groupDocs.length + ' รายการ</span></div>';
+      }
+      html += '<div class="doc-table">' +
+        groupDocs.map(function(d) { return docRowHTML(d, maxFy); }).join('') +
+        '</div>';
+    });
+    document.getElementById(containerId).innerHTML = html;
+  }
+
+  function renderAllDocuments() {
+    var docs = DATA.documents || [];
+    var maxFy = '2570';
+    var featured = docs.filter(function(d) { return d.featured_home && d.url; });
+    document.getElementById('home-featured-list').innerHTML = featured.map(function(d) {
+      return docRowHTML(d, maxFy);
+    }).join('');
+
+    renderCategoryGroupedByYear('forms-list', ['แบบฟอร์ม']);
+    renderCategoryGroupedByYear('plans-list', ['เล่มแผน', 'แผนพัฒนา']);
+    renderCategoryGroupedByYear('manual-list', ['คู่มือ']);
+    renderCategoryGroupedByYear('regulations-list', ['ระเบียบ']);
+  }
+  renderAllDocuments();
+
+  /* 3. Staff Directory Search & Filter (Rule T-4 & L-5) */
+  function applySettingsToDOM() {
+    var st = DATA.settings || {};
+    if (st.ppksar_url) document.getElementById('linkPpksar').href = st.ppksar_url;
+    if (st.status_70_url || st.status_2570_url) {
+      document.getElementById('linkStatus70').href = st.status_70_url || st.status_2570_url;
+    }
+    if (st.contact_email) {
+      var em = document.getElementById('linkEmail');
+      if (em) { em.href = 'mailto:' + st.contact_email; em.textContent = st.contact_email; }
+    }
+    var upd = st.updated_date || DATA.updated_at || '23 พฤศจิกายน 2569';
+    var u1 = document.getElementById('txtUpdated');
+    var u2 = document.getElementById('txtUpdatedMobile');
+    if (u1) u1.textContent = upd;
+    if (u2) u2.textContent = upd;
+    currentFY = updateFiscalTimeline();
+  }
+
+  var qInput = document.getElementById('staff-q');
+  var deptSel = document.getElementById('staff-dept');
+  var groupSel = document.getElementById('staff-group');
+  var tbody = document.getElementById('staff-tbody');
+  var matchCount = document.getElementById('staff-match-count');
+
+  function renderStaff() {
+    var staff = DATA.staff || [];
+    var q = (qInput.value || '').trim().toLowerCase();
+    var df = deptSel.value;
+    var gf = groupSel.value;
+    var filtered = staff.filter(function(s) {
+      var sDept = s.dept || s.department || '';
+      var sGroup = s.group || s.workgroup || '';
+      if (df && sDept !== df) return false;
+      if (gf) {
+        var gs = sGroup.split(',').map(function(x) { return x.trim(); });
+        if (gs.indexOf(gf) < 0) return false;
+      }
+      if (q) {
+        var hay = (s.name + ' ' + sDept + ' ' + sGroup).toLowerCase();
+        if (hay.indexOf(q) < 0) return false;
+      }
+      return true;
+    });
+    matchCount.textContent = filtered.length + ' รายการ';
+    tbody.innerHTML = filtered.map(function(s, idx) {
+      return '<tr>' +
+        '<td>' + (idx + 1) + '</td>' +
+        '<td class="staff-name">' + esc(s.name) + '</td>' +
+        '<td>' + esc(s.dept || s.department || '') + '</td>' +
+        '<td>' + esc(s.group || s.workgroup || '') + '</td>' +
+        '</tr>';
+    }).join('');
+  }
+
+  function rebuildStaffDropdowns() {
+    var staff = DATA.staff || [];
+    var depts = [], groups = [];
+    staff.forEach(function(s) {
+      var d = s.dept || s.department || '';
+      var gStr = s.group || s.workgroup || '';
+      if (d && depts.indexOf(d) < 0) depts.push(d);
+      gStr.split(',').forEach(function(g) {
+        g = g.trim();
+        if (g && groups.indexOf(g) < 0) groups.push(g);
+      });
+    });
+    depts.sort(function(a, b) { return a.localeCompare(b, 'th'); });
+    groups.sort(function(a, b) { return a.localeCompare(b, 'th'); });
+
+    var curD = deptSel.value, curG = groupSel.value;
+    deptSel.innerHTML = '<option value="">ทุกกลุ่มสาระ / งาน</option>';
+    groupSel.innerHTML = '<option value="">ทุกกลุ่มบริหารงาน</option>';
+    depts.forEach(function(d) {
+      var o = document.createElement('option');
+      o.value = d; o.textContent = d;
+      deptSel.appendChild(o);
+    });
+    groups.forEach(function(g) {
+      var o = document.createElement('option');
+      o.value = g; o.textContent = g;
+      groupSel.appendChild(o);
+    });
+    deptSel.value = curD;
+    groupSel.value = curG;
+    document.getElementById('staff-total-badge').textContent = 'ทั้งหมด ' + staff.length + ' รายการ';
+    renderStaff();
+  }
+
+  qInput.addEventListener('input', renderStaff);
+  deptSel.addEventListener('change', renderStaff);
+  groupSel.addEventListener('change', renderStaff);
+
+  function refreshAllViews() {
+    applySettingsToDOM();
+    renderAllDocuments();
+    rebuildStaffDropdowns();
+    if (typeof renderAdminPanel === 'function') renderAdminPanel();
+  }
+  refreshAllViews();
+
+  /* 4. Tab Routing (#home, #forms, #plans, #manual, #regulations, #staff, #admin) */
+  var TABS = ['home', 'forms', 'plans', 'manual', 'regulations', 'staff', 'admin'];
+  function activateTab(tabId, pushHash) {
+    if (TABS.indexOf(tabId) < 0) tabId = 'home';
+    document.querySelectorAll('.tab-btn').forEach(function(b) {
+      b.setAttribute('aria-selected', b.getAttribute('data-tab') === tabId ? 'true' : 'false');
+    });
+    TABS.forEach(function(t) {
+      var el = document.getElementById('view-' + t);
+      if (el) el.classList.toggle('hidden', t !== tabId);
+    });
+    if (tabId === 'admin' && typeof renderAdminPanel === 'function') {
+      renderAdminPanel();
+    }
+    if (pushHash) {
+      history.replaceState(null, '', tabId === 'home' ? location.pathname : ('#' + tabId));
+    }
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  document.querySelectorAll('.tab-btn').forEach(function(b) {
+    b.addEventListener('click', function() {
+      activateTab(b.getAttribute('data-tab'), true);
+    });
+  });
+  document.querySelectorAll('[data-goto]').forEach(function(b) {
+    b.addEventListener('click', function() {
+      activateTab(b.getAttribute('data-goto'), true);
+    });
+  });
+
+  /* 5. Option A: Live Google Sheet Backend + On-Page Admin Panel (#admin) */
+  var LS_API_KEY = 'pp_planning_gas_url';
+  var LS_PIN_KEY = 'pp_planning_gas_pin';
+  var LS_DRAFT_KEY = 'pp_planning_local_draft';
+
+  function getApiUrl() {
+    return (localStorage.getItem(LS_API_KEY) || (DATA.settings && DATA.settings.apps_script_url) || '').trim();
+  }
+  function setAdminStatus(msg, isError) {
+    var el = document.getElementById('adm-msg');
+    if (!el) return;
+    el.textContent = msg;
+    el.style.color = isError ? '#8b1e1e' : 'var(--plum-deep)';
+  }
+  function sanitizeNoEmail(s) {
+    return String(s || '').replace(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g, '').trim();
+  }
+  function saveLocalDraft() {
+    try { localStorage.setItem(LS_DRAFT_KEY, JSON.stringify(DATA)); } catch (e) {}
+  }
+
+  // Load saved local draft or live Google Sheet on startup
+  (function initDataSync() {
+    try {
+      var savedDraft = localStorage.getItem(LS_DRAFT_KEY);
+      if (savedDraft) {
+        var parsed = JSON.parse(savedDraft);
+        if (parsed && Array.isArray(parsed.documents) && Array.isArray(parsed.staff)) {
+          DATA = parsed;
+          refreshAllViews();
+        }
+      }
+    } catch (e) {}
+
+    var apiUrl = getApiUrl();
+    if (apiUrl) {
+      var badge = document.getElementById('adm-conn-badge');
+      if (badge) badge.textContent = 'กำลังซิงค์กับ Google Sheet...';
+      fetch(apiUrl)
+        .then(function(r) { return r.json(); })
+        .then(function(res) {
+          if (res && res.ok && res.data) {
+            if (res.data.documents && res.data.documents.length > 0) DATA.documents = res.data.documents;
+            if (res.data.staff && res.data.staff.length > 0) DATA.staff = res.data.staff;
+            if (res.data.settings) {
+              DATA.settings = Object.assign({}, DATA.settings || {}, res.data.settings);
+            }
+            saveLocalDraft();
+            refreshAllViews();
+            if (badge) badge.textContent = 'เชื่อม Google Sheet แล้ว';
+          }
+        })
+        .catch(function() {
+          if (badge) badge.textContent = 'ออฟไลน์ (ใช้ข้อมูลในเว็บ)';
+        });
+    }
+  })();
+
+  // Admin sub-tab switching
+  document.querySelectorAll('[data-admtab]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var target = btn.getAttribute('data-admtab');
+      document.querySelectorAll('[data-admtab]').forEach(function(b) {
+        b.classList.toggle('active', b === btn);
+      });
+      ['docs', 'staff', 'connect'].forEach(function(p) {
+        var pane = document.getElementById('adm-pane-' + p);
+        if (pane) pane.classList.toggle('hidden', p !== target);
+      });
+    });
+  });
+
+  function renderAdminPanel() {
+    var docs = DATA.documents || [];
+    var staff = DATA.staff || [];
+    var subBtns = document.querySelectorAll('[data-admtab]');
+    if (subBtns[0]) subBtns[0].textContent = '1. จัดการเอกสารและลิงก์ (' + docs.length + ')';
+    if (subBtns[1]) subBtns[1].textContent = '2. จัดการผู้รับผิดชอบ (' + staff.length + ')';
+
+    // Render Document Editor Rows
+    var cats = ['แบบฟอร์ม', 'เล่มแผน', 'แผนพัฒนา', 'คู่มือ', 'ระเบียบ'];
+    var docsContainer = document.getElementById('adm-docs-list');
+    docsContainer.innerHTML = docs.map(function(d, idx) {
+      var catOpts = cats.map(function(c) {
+        return '<option value="' + c + '"' + (d.category === c ? ' selected' : '') + '>' + c + '</option>';
+      }).join('');
+      return '<div class="adm-doc-item" data-doc-idx="' + idx + '">' +
+        '<div>' +
+          '<select class="adm-in-cat" style="width:100%;padding:7px 8px;border:1.5px solid var(--line);font-family:inherit;font-weight:700;color:var(--plum)">' + catOpts + '</select>' +
+          '<label style="display:flex;align-items:center;gap:5px;font-size:12px;margin-top:6px;cursor:pointer">' +
+            '<input type="checkbox" class="adm-in-feat"' + (d.featured_home ? ' checked' : '') + '> หน้าแรก' +
+          '</label>' +
+        '</div>' +
+        '<div>' +
+          '<input type="text" class="adm-in-fy" value="' + esc(d.fy) + '" placeholder="ปีงบ" style="width:100%;padding:7px 8px;border:1px solid var(--subline);font-family:inherit;font-weight:700">' +
+        '</div>' +
+        '<div style="display:flex;flex-direction:column;gap:6px">' +
+          '<div class="adm-doc-inputs">' +
+            '<input type="text" class="adm-in-title" value="' + esc(d.title) + '" placeholder="ชื่อเอกสาร" style="font-weight:700">' +
+            '<input type="text" class="adm-in-badge" value="' + esc(d.badge || 'PDF') + '" placeholder="ป้ายปุ่ม (เช่น PDF)">' +
+          '</div>' +
+          '<div class="adm-doc-inputs">' +
+            '<input type="text" class="adm-in-sub" value="' + esc(d.subtitle) + '" placeholder="คำอธิบายรอง">' +
+            '<input type="url" class="adm-in-url" value="' + esc(d.url) + '" placeholder="https://drive.google.com/...">' +
+          '</div>' +
+        '</div>' +
+        '<div style="display:flex;flex-direction:column;gap:6px">' +
+          '<button type="button" class="adm-btn" data-move-up="' + idx + '" title="เลื่อนขึ้น" style="padding:5px 10px;font-size:12px">↑</button>' +
+          '<button type="button" class="adm-btn danger" data-del-doc="' + idx + '" title="ลบรายการนี้" style="padding:5px 10px;font-size:12px">ลบ</button>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    // Bind live changes on document rows
+    docsContainer.querySelectorAll('.adm-doc-item').forEach(function(row) {
+      var i = Number(row.getAttribute('data-doc-idx'));
+      function syncRow() {
+        DATA.documents[i].category = row.querySelector('.adm-in-cat').value;
+        DATA.documents[i].fy = row.querySelector('.adm-in-fy').value.trim();
+        DATA.documents[i].title = row.querySelector('.adm-in-title').value.trim();
+        DATA.documents[i].badge = row.querySelector('.adm-in-badge').value.trim();
+        DATA.documents[i].subtitle = row.querySelector('.adm-in-sub').value.trim();
+        DATA.documents[i].url = row.querySelector('.adm-in-url').value.trim();
+        DATA.documents[i].featured_home = row.querySelector('.adm-in-feat').checked;
+        saveLocalDraft();
+        renderAllDocuments();
+      }
+      row.querySelectorAll('input, select').forEach(function(inp) {
+        inp.addEventListener('change', function() {
+          syncRow();
+          setAdminStatus('อัปเดตรายการเอกสารในหน้าเว็บแล้ว (อย่าลืมกด "บันทึกขึ้น Google Sheet" หรือดาวน์โหลดไฟล์)', false);
+        });
+      });
+    });
+
+    docsContainer.querySelectorAll('[data-move-up]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var i = Number(btn.getAttribute('data-move-up'));
+        if (i > 0) {
+          var tmp = DATA.documents[i - 1];
+          DATA.documents[i - 1] = DATA.documents[i];
+          DATA.documents[i] = tmp;
+          saveLocalDraft();
+          refreshAllViews();
+        }
+      });
+    });
+    docsContainer.querySelectorAll('[data-del-doc]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var i = Number(btn.getAttribute('data-del-doc'));
+        DATA.documents.splice(i, 1);
+        saveLocalDraft();
+        refreshAllViews();
+        setAdminStatus('ลบเอกสารออกแล้ว 1 รายการ', false);
+      });
+    });
+
+    // Render Staff Editor Table (first 250 rows editable inline)
+    var stBody = document.getElementById('adm-staff-tbody');
+    stBody.innerHTML = staff.map(function(s, idx) {
+      return '<tr data-staff-idx="' + idx + '">' +
+        '<td>' + (idx + 1) + '</td>' +
+        '<td><input type="text" class="adm-st-name" value="' + esc(s.name) + '" style="width:100%;padding:5px 8px;border:1px solid var(--subline);font-family:inherit;font-weight:600"></td>' +
+        '<td><input type="text" class="adm-st-dept" value="' + esc(s.dept || s.department || '') + '" style="width:100%;padding:5px 8px;border:1px solid var(--subline);font-family:inherit"></td>' +
+        '<td><input type="text" class="adm-st-grp" value="' + esc(s.group || s.workgroup || '') + '" style="width:100%;padding:5px 8px;border:1px solid var(--subline);font-family:inherit"></td>' +
+        '<td><button type="button" class="adm-btn danger" data-del-staff="' + idx + '" style="padding:4px 10px;font-size:12px">ลบ</button></td>' +
+      '</tr>';
+    }).join('');
+
+    stBody.querySelectorAll('tr[data-staff-idx]').forEach(function(tr) {
+      var i = Number(tr.getAttribute('data-staff-idx'));
+      tr.querySelectorAll('input').forEach(function(inp) {
+        inp.addEventListener('change', function() {
+          DATA.staff[i].name = sanitizeNoEmail(tr.querySelector('.adm-st-name').value);
+          DATA.staff[i].dept = sanitizeNoEmail(tr.querySelector('.adm-st-dept').value);
+          DATA.staff[i].group = sanitizeNoEmail(tr.querySelector('.adm-st-grp').value);
+          tr.querySelector('.adm-st-name').value = DATA.staff[i].name;
+          saveLocalDraft();
+          rebuildStaffDropdowns();
+          setAdminStatus('แก้ไขรายชื่อผู้รับผิดชอบแล้ว (ตรวจ L-5 ตัดอีเมลอัตโนมัติ)', false);
+        });
+      });
+    });
+    stBody.querySelectorAll('[data-del-staff]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var i = Number(btn.getAttribute('data-del-staff'));
+        DATA.staff.splice(i, 1);
+        saveLocalDraft();
+        refreshAllViews();
+        setAdminStatus('ลบรายชื่อผู้รับผิดชอบแล้ว', false);
+      });
+    });
+
+    // Populate Settings & API fields
+    var st = DATA.settings || {};
+    document.getElementById('cfg-api-url').value = getApiUrl();
+    document.getElementById('cfg-api-pin').value = localStorage.getItem(LS_PIN_KEY) || 'pp2570';
+    document.getElementById('cfg-ppksar').value = st.ppksar_url || '';
+    document.getElementById('cfg-status70').value = st.status_70_url || st.status_2570_url || '';
+    document.getElementById('cfg-fy').value = st.fy_override || '';
+    document.getElementById('cfg-email').value = st.contact_email || '';
+  }
+
+  // Add Document Form handlers
+  document.getElementById('btn-add-doc').addEventListener('click', function() {
+    document.getElementById('new-doc-form').classList.remove('hidden');
+    document.getElementById('nd-title').focus();
+  });
+  document.getElementById('btn-cancel-add-doc').addEventListener('click', function() {
+    document.getElementById('new-doc-form').classList.add('hidden');
+  });
+  document.getElementById('btn-confirm-add-doc').addEventListener('click', function() {
+    var title = document.getElementById('nd-title').value.trim();
+    var url = document.getElementById('nd-url').value.trim();
+    if (!title || !url) {
+      setAdminStatus('กรุณากรอกทั้ง "ชื่อเอกสาร" และ "ลิงก์ไฟล์" ก่อนกดเพิ่ม', true);
+      return;
+    }
+    DATA.documents.unshift({
+      id: 'doc-' + Date.now(),
+      category: document.getElementById('nd-cat').value,
+      fy: document.getElementById('nd-fy').value.trim() || '2570',
+      title: title,
+      subtitle: document.getElementById('nd-sub').value.trim(),
+      url: url,
+      badge: document.getElementById('nd-badge').value.trim() || 'PDF',
+      featured_home: document.getElementById('nd-feat').checked
+    });
+    document.getElementById('nd-title').value = '';
+    document.getElementById('nd-sub').value = '';
+    document.getElementById('nd-url').value = '';
+    document.getElementById('new-doc-form').classList.add('hidden');
+    saveLocalDraft();
+    refreshAllViews();
+    setAdminStatus('เพิ่มเอกสาร "' + title + '" เรียบร้อยแล้ว!', false);
+  });
+
+  // Add / Paste Staff handlers
+  document.getElementById('btn-add-staff').addEventListener('click', function() {
+    DATA.staff.unshift({ name: 'ชื่อ-สกุล (แก้ไขตรงนี้)', dept: 'กลุ่มสาระ/งาน', group: 'กลุ่มบริหารงานวิชาการ' });
+    saveLocalDraft();
+    refreshAllViews();
+    setAdminStatus('เพิ่มแถวรายชื่อใหม่ที่บรรทัดแรกแล้ว', false);
+  });
+  document.getElementById('btn-toggle-paste-staff').addEventListener('click', function() {
+    document.getElementById('paste-staff-box').classList.toggle('hidden');
+  });
+  function parseStaffTSV(raw) {
+    var lines = (raw || '').split(/\r?\n/);
+    var out = [];
+    lines.forEach(function(line) {
+      if (!line.trim()) return;
+      var cols = line.split('\t').map(function(c) { return sanitizeNoEmail(c); });
+      // Support 3 cols (name, dept, group) or 4 cols (no, name, dept, group)
+      var name = '', dept = '', grp = '';
+      if (cols.length >= 4 && /^\d+$/.test(cols[0])) {
+        name = cols[1]; dept = cols[2]; grp = cols[3];
+      } else {
+        name = cols[0]; dept = cols[1] || ''; grp = cols[2] || '';
+      }
+      if (!name || name === 'ชื่อ-สกุล' || name.toLowerCase() === 'name') return;
+      out.push({ name: name, dept: dept, group: grp });
+    });
+    return out;
+  }
+  document.getElementById('btn-apply-tsv-staff').addEventListener('click', function() {
+    var rows = parseStaffTSV(document.getElementById('staff-tsv-input').value);
+    if (!rows.length) { setAdminStatus('ไม่พบข้อมูลที่วาง กรุณาคัดลอกจากตาราง Excel/Sheet', true); return; }
+    DATA.staff = rows;
+    document.getElementById('paste-staff-box').classList.add('hidden');
+    saveLocalDraft();
+    refreshAllViews();
+    setAdminStatus('นำเข้าผู้รับผิดชอบ ' + rows.length + ' รายการเรียบร้อยแล้ว (ตรวจ L-5 ผ่าน)', false);
+  });
+  document.getElementById('btn-append-tsv-staff').addEventListener('click', function() {
+    var rows = parseStaffTSV(document.getElementById('staff-tsv-input').value);
+    if (!rows.length) { setAdminStatus('ไม่พบข้อมูลที่วาง', true); return; }
+    DATA.staff = DATA.staff.concat(rows);
+    document.getElementById('paste-staff-box').classList.add('hidden');
+    saveLocalDraft();
+    refreshAllViews();
+    setAdminStatus('เพิ่มต่อท้ายอีก ' + rows.length + ' รายการเรียบร้อยแล้ว', false);
+  });
+
+  // Settings change handlers
+  ['cfg-ppksar', 'cfg-status70', 'cfg-fy', 'cfg-email', 'cfg-api-url', 'cfg-api-pin'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('change', function() {
+      DATA.settings = DATA.settings || {};
+      DATA.settings.ppksar_url = document.getElementById('cfg-ppksar').value.trim();
+      DATA.settings.status_70_url = document.getElementById('cfg-status70').value.trim();
+      DATA.settings.fy_override = document.getElementById('cfg-fy').value.trim();
+      DATA.settings.contact_email = document.getElementById('cfg-email').value.trim();
+      var u = document.getElementById('cfg-api-url').value.trim();
+      var p = document.getElementById('cfg-api-pin').value.trim();
+      DATA.settings.apps_script_url = u;
+      try {
+        localStorage.setItem(LS_API_KEY, u);
+        localStorage.setItem(LS_PIN_KEY, p);
+      } catch (e) {}
+      saveLocalDraft();
+      applySettingsToDOM();
+      setAdminStatus('บันทึกการตั้งค่าลงในเบราว์เซอร์แล้ว', false);
+    });
+  });
+
+  // Copy Apps Script code button
+  document.getElementById('btn-copy-gas').addEventListener('click', function() {
+    var code = document.getElementById('gas-code-preview').textContent;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(code);
+      setAdminStatus('คัดลอกโค้ด Apps Script แล้ว! นำไปวางใน Google Sheet > ส่วนขยาย > Apps Script ได้เลย', false);
+    }
+  });
+
+  // Push / Pull with Google Sheet Apps Script Web App
+  function pushToGoogleSheet(actionName) {
+    var apiUrl = document.getElementById('cfg-api-url').value.trim() || getApiUrl();
+    var pin = document.getElementById('cfg-api-pin').value.trim() || localStorage.getItem(LS_PIN_KEY) || 'pp2570';
+    if (!apiUrl) {
+      // Switch user to sub-tab 3 so they see where to paste the Apps Script URL
+      document.querySelector('[data-admtab="connect"]').click();
+      setAdminStatus('กรุณาวาง URL เว็บแอป Google Apps Script (/exec) ในช่องด้านล่างก่อนกดบันทึกขึ้น Google Sheet (หรือกดปุ่ม "ดาวน์โหลดไฟล์เว็บ index.html" ด้านขวาบนเพื่อเซฟเป็นไฟล์ทันที)', true);
+      return;
+    }
+    try {
+      localStorage.setItem(LS_API_KEY, apiUrl);
+      localStorage.setItem(LS_PIN_KEY, pin);
+    } catch (e) {}
+    DATA.settings.apps_script_url = apiUrl;
+
+    setAdminStatus('กำลังส่งข้อมูลไปบันทึกที่ Google Sheet...', false);
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({
+        pin: pin,
+        action: actionName || 'save_all',
+        settings: DATA.settings,
+        documents: DATA.documents,
+        staff: DATA.staff
+      })
+    })
+      .then(function(r) { return r.json(); })
+      .then(function(res) {
+        if (res && res.ok) {
+          if (res.data && res.data.settings && res.data.settings.updated_date) {
+            DATA.settings.updated_date = res.data.settings.updated_date;
+          }
+          saveLocalDraft();
+          refreshAllViews();
+          document.getElementById('adm-conn-badge').textContent = 'ซิงค์กับ Google Sheet ล่าสุดแล้ว';
+          setAdminStatus('บันทึกข้อมูลทั้งหมดขึ้น Google Sheet สำเร็จเรียบร้อย!', false);
+        } else {
+          setAdminStatus('บันทึกไม่สำเร็จ: ' + ((res && res.error) || 'ตรวจสอบรหัสผ่านหรือ URL'), true);
+        }
+      })
+      .catch(function(err) {
+        setAdminStatus('เชื่อมต่อ Google Sheet ไม่ได้: ' + err, true);
+      });
+  }
+
+  document.getElementById('btn-save-sheet').addEventListener('click', function() {
+    pushToGoogleSheet('save_all');
+  });
+  document.getElementById('btn-push-init-api').addEventListener('click', function() {
+    pushToGoogleSheet('init_all');
+  });
+  document.getElementById('btn-test-api').addEventListener('click', function() {
+    var apiUrl = document.getElementById('cfg-api-url').value.trim();
+    if (!apiUrl) {
+      setAdminStatus('กรุณาวาง URL ของ Google Apps Script (/exec) ก่อนกดทดสอบ', true);
+      return;
+    }
+    setAdminStatus('กำลังดึงข้อมูลจาก Google Sheet...', false);
+    fetch(apiUrl)
+      .then(function(r) { return r.json(); })
+      .then(function(res) {
+        if (res && res.ok && res.data) {
+          if (res.data.documents && res.data.documents.length) DATA.documents = res.data.documents;
+          if (res.data.staff && res.data.staff.length) DATA.staff = res.data.staff;
+          if (res.data.settings) DATA.settings = Object.assign({}, DATA.settings, res.data.settings);
+          DATA.settings.apps_script_url = apiUrl;
+          localStorage.setItem(LS_API_KEY, apiUrl);
+          saveLocalDraft();
+          refreshAllViews();
+          setAdminStatus('เชื่อมต่อสำเร็จ! ดึงเอกสาร ' + DATA.documents.length + ' รายการ และผู้รับผิดชอบ ' + DATA.staff.length + ' คน จาก Sheet แล้ว', false);
+        } else {
+          setAdminStatus('เชื่อมต่อได้ แต่ยังไม่มีข้อมูลใน Sheet — กดปุ่มสีทอง "ส่งข้อมูลปัจจุบันทั้งหมดขึ้นสร้างตารางใน Sheet" ได้เลย', false);
+        }
+      })
+      .catch(function(err) {
+        setAdminStatus('เชื่อมต่อไม่สำเร็จ: ตรวจสอบว่า Deploy Web App เป็น "ทุกคน (Anyone)" แล้ว (' + err + ')', true);
+      });
+  });
+
+  // Download self-contained updated index.html directly from browser
+  document.getElementById('btn-export-html').addEventListener('click', function() {
+    var clone = document.documentElement.cloneNode(true);
+    var dataScript = clone.querySelector('#site-data');
+    if (dataScript) {
+      dataScript.textContent = JSON.stringify(DATA);
+    }
+    var htmlStr = '<!doctype html>\n' + clone.outerHTML;
+    var blob = new Blob([htmlStr], { type: 'text/html;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'index.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setAdminStatus('ดาวน์โหลดไฟล์ index.html ฉบับอัปเดตข้อมูลล่าสุดเรียบร้อยแล้ว!', false);
+  });
+
+  window.addEventListener('hashchange', function() {
+    var h = (location.hash || '').replace(/^#/, '');
+    if (h) activateTab(h, false);
+  });
+  var initHash = (location.hash || '').replace(/^#/, '');
+  if (initHash && TABS.indexOf(initHash) >= 0) {
+    activateTab(initHash, false);
+  }
+})();
+</script>
+</body>
+</html>
