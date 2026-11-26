@@ -407,6 +407,27 @@
     color: #fff;
   }
 
+  /* Forms paired under a manual row (คู่มือ PMn → แบบฟอร์ม PMna-k) */
+  .doc-row.has-pair { border-bottom: 0; padding-bottom: 8px; }
+  .doc-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 36px 16px 146px;
+    border-bottom: 1px solid var(--subline);
+  }
+  .doc-pair-label { font-size: 13px; font-weight: 700; color: var(--muted); }
+  .doc-pair a {
+    font-size: 15px;
+    color: var(--plum);
+    text-decoration: none;
+    border-left: 3px solid var(--subline);
+    padding: 4px 0 4px 10px;
+  }
+  .doc-pair a:hover { border-left-color: var(--gold); background: var(--cream); }
+  .doc-pair a b { text-decoration: underline; text-underline-offset: 3px; }
+  .doc-pair a em { font-style: normal; font-size: 12px; color: var(--muted); margin-left: 4px; white-space: nowrap; }
+
   /* Year group headers inside Plans / Forms */
   .year-group-bar {
     padding: 14px 36px;
@@ -760,6 +781,7 @@
       grid-template-columns: 1fr;
       gap: 6px;
     }
+    .doc-pair { padding-left: 20px; padding-right: 20px; }
     .doc-action {
       justify-self: start;
       margin-top: 4px;
@@ -957,7 +979,7 @@
   </main>
 </div>
 
-<script id="site-data" type="application/json">{"updated_at": "26 พฤศจิกายน 2569", "settings": {"site_title": "งานแผนงาน โรงเรียนพิษณุโลกพิทยาคม", "affiliation": "สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาพิษณุโลก อุตรดิตถ์", "contact_email": "planning.pp64@gmail.com", "ppksar_url": "http://161.82.218.12/ppksar", "status_70_url": "https://script.google.com/a/macros/pp.ac.th/s/AKfycbx7a1-gH2RMif03G1YDusNGbfIBUksTs5-tJw7QkGK1xWCC0V-dG3Es2-t_MChcKoET/exec", "school_web_url": "http://www.pp.ac.th/ppweb/index2.php", "fy_override": "", "spreadsheet_id": "1BIRsO9rDHGSzYljjPZgdBGvRi4fYXIFs3T1SvQvTh5o", "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1BIRsO9rDHGSzYljjPZgdBGvRi4fYXIFs3T1SvQvTh5o/edit", "apps_script_url": "https://script.google.com/macros/s/AKfycbzA_8eXDsJ8OGm823jgDq5RTvhhzdfPn7TCPy3Qqd8-dVsmEUpWOUmWposEWbVsJxpSPQ/exec"}, "documents": [{"id": "plan-2570-digital", "category": "เล่มแผน", "fy": "2570", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2570 (ฉบับปรับปรุง พ.ย. 2569)", "subtitle": "รหัสกิจกรรม 70-001 ถึง 70-239 · 9 โครงการ 6 กลยุทธ์ · งบประมาณรวม 55,736,777.63 บาท (171 หน้า)", "url": "https://drive.google.com/file/d/1tUibuagUGwknwlfLet-PxF9Tw94IK65X/view", "badge": "PDF ฉบับจริง", "featured_home": true}, {"id": "plan-2570-docx", "category": "เล่มแผน", "fy": "2570", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2570 (ฉบับเอกสาร Word)", "subtitle": "ไฟล์ต้นฉบับแก้ไขได้บน Google Docs สำหรับอ้างอิงรายละเอียดโครงการและตารางงบประมาณ", "url": "https://docs.google.com/document/d/1dB2VGa93Wjb-PrRmipMOm7fsAQemGSMZ/edit", "badge": "Google Docs", "featured_home": false}, {"id": "plan-dev-2566-2570", "category": "แผนพัฒนา", "fy": "2570", "title": "แผนพัฒนาคุณภาพการศึกษา พ.ศ. 2566–2570", "subtitle": "กรอบกลยุทธ์ เป้าประสงค์ และตัวชี้วัดระยะ 5 ปี ของโรงเรียนพิษณุโลกพิทยาคม", "url": "https://drive.google.com/file/d/1-D9kXzBTV3q1JDouZHkAfKh2cckEXW93/view", "badge": "PDF", "featured_home": false}, {"id": "plan-2569", "category": "เล่มแผน", "fy": "2569", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2569 (รวมไฟล์แผน 69)", "subtitle": "เอกสารแผนปฏิบัติการและรายละเอียดงบประมาณรายกิจกรรม ปีงบประมาณ 2569", "url": "https://drive.google.com/file/d/1Ce7zxTY-ocFNFQq91uHNlHYF5ZhQpMSF/view", "badge": "PDF", "featured_home": false}, {"id": "plan-2568", "category": "เล่มแผน", "fy": "2568", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2568 (ฉบับมีลายเซ็น)", "subtitle": "เล่มแผนปฏิบัติการประจำปีงบประมาณ 2568 ที่ผ่านการอนุมัติและลงนามแล้ว", "url": "https://drive.google.com/file/d/1x140_1lmgmkDOaeYsbHS1v1k46Ymf7Aq/view", "badge": "PDF ลงนาม", "featured_home": false}, {"id": "plan-2568-basic", "category": "แผนพัฒนา", "fy": "2568", "title": "แผนบริหารการศึกษาขั้นพื้นฐาน ปีงบประมาณ 2568", "subtitle": "เอกสารกรอบการบริหารจัดการศึกษาขั้นพื้นฐานของสถานศึกษา", "url": "https://drive.google.com/file/d/1CwdG-FUGGHCZS3J1n1A-lBHK_cJ6Ft7z/view", "badge": "PDF", "featured_home": false}, {"id": "plan-2567", "category": "เล่มแผน", "fy": "2567", "title": "เล่มแผนปฏิบัติการประจำปีงบประมาณ 2567", "subtitle": "เอกสารแผนปฏิบัติการประจำปีงบประมาณ 2567 สำหรับอ้างอิงย้อนหลัง", "url": "https://drive.google.com/file/d/1VVxlYQTEbudJ3UV6XJW6SsMjo36SbDdb/view", "badge": "PDF", "featured_home": false}, {"id": "forms-folder-main", "category": "แบบฟอร์ม", "fy": "2570", "title": "โฟลเดอร์รวมเอกสารแบบฟอร์มการจัดทำโครงการ/กิจกรรม", "subtitle": "แบบฟอร์มขออนุมัติโครงการ บันทึกข้อความขออนุญาตจัดกิจกรรม และตัวอย่างการเขียนโครงการ", "url": "https://drive.google.com/drive/folders/1fqIA26K-rTo34g6mfS-m1J3CCC6nEgnk", "badge": "โฟลเดอร์ Drive", "featured_home": true}, {"id": "form-pm3a1-docx", "category": "แบบฟอร์ม", "fy": "2570", "title": "แบบฟอร์ม PM3a-1 — ชุดประกอบเล่มรายงานกิจกรรม (ใช้คู่ระบบ ppksar)", "subtitle": "สำหรับกิจกรรมที่ปิดในระบบ ppksar: ปก คำนำ สารบัญ หน้าคั่นแทรก 5.2–5.3 ภาคผนวก และตารางรูปภาพ (ดาวน์โหลดไปพิมพ์แก้ไขได้)", "url": "https://drive.google.com/file/d/1309sIqXyE04KBJELFrL7msRGMvYb7EXN/view", "badge": "ไฟล์ Word", "featured_home": true}, {"id": "form-pm3a2-docx", "category": "แบบฟอร์ม", "fy": "2570", "title": "แบบฟอร์ม PM3a-2 — แบบรายงานกิจกรรมฉบับเต็ม (กรอกมือ นอกระบบ ppksar)", "subtitle": "สำหรับกิจกรรมที่ไม่ได้อยู่ในระบบ ppksar: รายงานผลการดำเนินงาน 13 หัวข้อ พร้อมช่องลงนามและตารางรูปภาพ (ดาวน์โหลดไปพิมพ์แก้ไขได้)", "url": "https://drive.google.com/file/d/1WFEmR52jCjJLxqE51vryCqWXfFbtiNYG/view", "badge": "ไฟล์ Word", "featured_home": false}, {"id": "form-canva-workshop", "category": "แบบฟอร์ม", "fy": "2569", "title": "เอกสารประกอบการอบรมการเขียนโครงการและการสรุปโครงการ", "subtitle": "แนวทางการเขียนหลักการและเหตุผล วัตถุประสงค์ ตัวชี้วัดความสำเร็จ และการสรุปผล", "url": "https://www.canva.com/design/DAGSIeMw0K0/n6m9KhfO3u62esIsa6trxQ/view", "badge": "สไลด์อบรม", "featured_home": false}, {"id": "manual-pm1-full", "category": "คู่มือ", "fy": "2570", "title": "คู่มือ PM1 — การสร้างกิจกรรม การเชื่อมโยงตัวชี้วัด และประเด็นการพิจารณา", "subtitle": "ขั้นตอนการตั้งกิจกรรมในระบบ ppksar การผูกตัวชี้วัดให้ปลั๊กเป็นสีเขียว และการตรวจสอบข้อมูลข้อ 6–9", "url": "https://drive.google.com/file/d/1FX7_ZCn0ERj1Zl8EoT432_bISAODCYYk/view", "badge": "PDF คู่มือหลัก", "featured_home": true}, {"id": "manual-pm1-short", "category": "คู่มือ", "fy": "2570", "title": "คู่มือ PM1 (ฉบับย่อ) — ขั้นตอนการสร้างกิจกรรมในโปรแกรมแผนงาน", "subtitle": "สรุปขั้นตอนการเพิ่มกิจกรรมใหม่และกรอกข้อมูลพื้นฐานในระบบแผนงาน", "url": "https://drive.google.com/file/d/1elga7DgUvUe8DN9MNEZ7LOrtTG0RBEiW/view", "badge": "PDF", "featured_home": false}, {"id": "manual-pm3", "category": "คู่มือ", "fy": "2570", "title": "คู่มือ PM3 — ประเมินตัวชี้วัดและสรุป (ปิด) กิจกรรม สำหรับครู (ฉบับปรับปรุง พ.ย. 2569)", "subtitle": "กำหนดและประเมินตัวชี้วัด ตรวจผู้ลงนาม ปิดกิจกรรมในระบบ ppksar ดาวน์โหลด 5.1–5.3 และประกอบเล่มรายงานคู่กับ PM3a-1 (8 หน้า)", "url": "https://drive.google.com/file/d/1IkjFacoZVxGrH-AgH3g_fXCwxIvrf_xg/view", "badge": "PDF", "featured_home": true}, {"id": "manual-folder-all", "category": "คู่มือ", "fy": "2570", "title": "โฟลเดอร์รวมคู่มือการใช้งานโปรแกรมแผนงานทั้งหมด (PM1 – PM3)", "subtitle": "คลังเก็บไฟล์คู่มือและแบบฟอร์มรายงานผลใน Google Drive ของงานแผนงาน", "url": "https://drive.google.com/drive/folders/1qY60JW0RI28OJVLi1DBDuF9CvFGqwwMD", "badge": "โฟลเดอร์ Drive", "featured_home": false}, {"id": "reg-subsidy-2566-2569", "category": "ระเบียบ", "fy": "2570", "title": "แนวทางการดำเนินงานโครงการสนับสนุนค่าใช้จ่ายในการจัดการศึกษา (เงินอุดหนุนฯ)", "subtitle": "หลักเกณฑ์การใช้งบเงินอุดหนุนรายหัว และเงินกิจกรรมพัฒนาผู้เรียน (วิชาการ · คุณธรรม · ลูกเสือ · ทัศนศึกษา · ICT)", "url": "https://drive.google.com/file/d/1JcbPzHXryw7Xij6ocRUS_ACm6cqZWvcs/view", "badge": "PDF ระเบียบ", "featured_home": true}], "built_at": 1795681917029}</script>
+<script id="site-data" type="application/json">{"updated_at": "26 พฤศจิกายน 2569", "settings": {"site_title": "งานแผนงาน โรงเรียนพิษณุโลกพิทยาคม", "affiliation": "สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาพิษณุโลก อุตรดิตถ์", "contact_email": "planning.pp64@gmail.com", "ppksar_url": "http://161.82.218.12/ppksar", "status_70_url": "https://script.google.com/a/macros/pp.ac.th/s/AKfycbx7a1-gH2RMif03G1YDusNGbfIBUksTs5-tJw7QkGK1xWCC0V-dG3Es2-t_MChcKoET/exec", "school_web_url": "http://www.pp.ac.th/ppweb/index2.php", "fy_override": "", "spreadsheet_id": "1BIRsO9rDHGSzYljjPZgdBGvRi4fYXIFs3T1SvQvTh5o", "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1BIRsO9rDHGSzYljjPZgdBGvRi4fYXIFs3T1SvQvTh5o/edit", "apps_script_url": "https://script.google.com/macros/s/AKfycbzA_8eXDsJ8OGm823jgDq5RTvhhzdfPn7TCPy3Qqd8-dVsmEUpWOUmWposEWbVsJxpSPQ/exec"}, "documents": [{"id": "plan-2570-digital", "category": "เล่มแผน", "fy": "2570", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2570 (ฉบับปรับปรุง พ.ย. 2569)", "subtitle": "รหัสกิจกรรม 70-001 ถึง 70-239 · 9 โครงการ 6 กลยุทธ์ · งบประมาณรวม 55,736,777.63 บาท (171 หน้า)", "url": "https://drive.google.com/file/d/1tUibuagUGwknwlfLet-PxF9Tw94IK65X/view", "badge": "PDF ฉบับจริง", "featured_home": true}, {"id": "plan-2570-docx", "category": "เล่มแผน", "fy": "2570", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2570 (ฉบับเอกสาร Word)", "subtitle": "ไฟล์ต้นฉบับแก้ไขได้บน Google Docs สำหรับอ้างอิงรายละเอียดโครงการและตารางงบประมาณ", "url": "https://docs.google.com/document/d/1dB2VGa93Wjb-PrRmipMOm7fsAQemGSMZ/edit", "badge": "Google Docs", "featured_home": false}, {"id": "plan-dev-2566-2570", "category": "แผนพัฒนา", "fy": "2570", "title": "แผนพัฒนาคุณภาพการศึกษา พ.ศ. 2566–2570", "subtitle": "กรอบกลยุทธ์ เป้าประสงค์ และตัวชี้วัดระยะ 5 ปี ของโรงเรียนพิษณุโลกพิทยาคม", "url": "https://drive.google.com/file/d/1-D9kXzBTV3q1JDouZHkAfKh2cckEXW93/view", "badge": "PDF", "featured_home": false}, {"id": "plan-2569", "category": "เล่มแผน", "fy": "2569", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2569 (รวมไฟล์แผน 69)", "subtitle": "เอกสารแผนปฏิบัติการและรายละเอียดงบประมาณรายกิจกรรม ปีงบประมาณ 2569", "url": "https://drive.google.com/file/d/1Ce7zxTY-ocFNFQq91uHNlHYF5ZhQpMSF/view", "badge": "PDF", "featured_home": false}, {"id": "plan-2568", "category": "เล่มแผน", "fy": "2568", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2568 (ฉบับมีลายเซ็น)", "subtitle": "เล่มแผนปฏิบัติการประจำปีงบประมาณ 2568 ที่ผ่านการอนุมัติและลงนามแล้ว", "url": "https://drive.google.com/file/d/1x140_1lmgmkDOaeYsbHS1v1k46Ymf7Aq/view", "badge": "PDF ลงนาม", "featured_home": false}, {"id": "plan-2568-basic", "category": "แผนพัฒนา", "fy": "2568", "title": "แผนบริหารการศึกษาขั้นพื้นฐาน ปีงบประมาณ 2568", "subtitle": "เอกสารกรอบการบริหารจัดการศึกษาขั้นพื้นฐานของสถานศึกษา", "url": "https://drive.google.com/file/d/1CwdG-FUGGHCZS3J1n1A-lBHK_cJ6Ft7z/view", "badge": "PDF", "featured_home": false}, {"id": "plan-2567", "category": "เล่มแผน", "fy": "2567", "title": "เล่มแผนปฏิบัติการประจำปีงบประมาณ 2567", "subtitle": "เอกสารแผนปฏิบัติการประจำปีงบประมาณ 2567 สำหรับอ้างอิงย้อนหลัง", "url": "https://drive.google.com/file/d/1VVxlYQTEbudJ3UV6XJW6SsMjo36SbDdb/view", "badge": "PDF", "featured_home": false}, {"id": "forms-folder-main", "category": "แบบฟอร์ม", "fy": "2570", "title": "โฟลเดอร์รวมเอกสารแบบฟอร์มการจัดทำโครงการ/กิจกรรม", "subtitle": "แบบฟอร์มขออนุมัติโครงการ บันทึกข้อความขออนุญาตจัดกิจกรรม และตัวอย่างการเขียนโครงการ", "url": "https://drive.google.com/drive/folders/1fqIA26K-rTo34g6mfS-m1J3CCC6nEgnk", "badge": "โฟลเดอร์ Drive", "featured_home": true}, {"id": "form-pm3a1-docx", "category": "แบบฟอร์ม", "fy": "2570", "title": "แบบฟอร์ม PM3a-1 — ชุดประกอบเล่มรายงานกิจกรรม (ใช้คู่ระบบ ppksar)", "subtitle": "สำหรับกิจกรรมที่ปิดในระบบ ppksar: ปก คำนำ สารบัญ หน้าคั่นแทรก 5.2–5.3 ภาคผนวก และตารางรูปภาพ (ดาวน์โหลดไปพิมพ์แก้ไขได้)", "url": "https://drive.google.com/file/d/1309sIqXyE04KBJELFrL7msRGMvYb7EXN/view", "badge": "ไฟล์ Word", "featured_home": true}, {"id": "form-pm3a2-docx", "category": "แบบฟอร์ม", "fy": "2570", "title": "แบบฟอร์ม PM3a-2 — แบบรายงานกิจกรรมฉบับเต็ม (กรอกมือ นอกระบบ ppksar)", "subtitle": "สำหรับกิจกรรมที่ไม่ได้อยู่ในระบบ ppksar: รายงานผลการดำเนินงาน 13 หัวข้อ พร้อมช่องลงนามและตารางรูปภาพ (ดาวน์โหลดไปพิมพ์แก้ไขได้)", "url": "https://drive.google.com/file/d/1WFEmR52jCjJLxqE51vryCqWXfFbtiNYG/view", "badge": "ไฟล์ Word", "featured_home": false}, {"id": "form-canva-workshop", "category": "แบบฟอร์ม", "fy": "2569", "title": "เอกสารประกอบการอบรมการเขียนโครงการและการสรุปโครงการ", "subtitle": "แนวทางการเขียนหลักการและเหตุผล วัตถุประสงค์ ตัวชี้วัดความสำเร็จ และการสรุปผล", "url": "https://www.canva.com/design/DAGSIeMw0K0/n6m9KhfO3u62esIsa6trxQ/view", "badge": "สไลด์อบรม", "featured_home": false}, {"id": "manual-pm1-full", "category": "คู่มือ", "fy": "2570", "title": "คู่มือ PM1 — การสร้างกิจกรรม การเชื่อมโยงตัวชี้วัด และประเด็นการพิจารณา", "subtitle": "ขั้นตอนการตั้งกิจกรรมในระบบ ppksar การผูกตัวชี้วัดให้ปลั๊กเป็นสีเขียว และการตรวจสอบข้อมูลข้อ 6–9", "url": "https://drive.google.com/file/d/1FX7_ZCn0ERj1Zl8EoT432_bISAODCYYk/view", "badge": "PDF คู่มือหลัก", "featured_home": true}, {"id": "manual-pm1-short", "category": "คู่มือ", "fy": "2570", "title": "คู่มือ PM1 (ฉบับย่อ) — ขั้นตอนการสร้างกิจกรรมในโปรแกรมแผนงาน", "subtitle": "สรุปขั้นตอนการเพิ่มกิจกรรมใหม่และกรอกข้อมูลพื้นฐานในระบบแผนงาน", "url": "https://drive.google.com/file/d/1elga7DgUvUe8DN9MNEZ7LOrtTG0RBEiW/view", "badge": "PDF", "featured_home": false}, {"id": "manual-pm3", "category": "คู่มือ", "fy": "2570", "title": "คู่มือ PM3 — ประเมินตัวชี้วัดและสรุป (ปิด) กิจกรรม สำหรับครู (ฉบับปรับปรุง พ.ย. 2569)", "subtitle": "กำหนดและประเมินตัวชี้วัด ตรวจผู้ลงนาม ปิดกิจกรรมในระบบ ppksar ดาวน์โหลด 5.1–5.3 และประกอบเล่มรายงานคู่กับ PM3a-1 (8 หน้า)", "url": "https://drive.google.com/file/d/1IkjFacoZVxGrH-AgH3g_fXCwxIvrf_xg/view", "badge": "PDF", "featured_home": true}, {"id": "manual-folder-all", "category": "คู่มือ", "fy": "2570", "title": "โฟลเดอร์รวมคู่มือการใช้งานโปรแกรมแผนงานทั้งหมด (PM1 – PM3)", "subtitle": "คลังเก็บไฟล์คู่มือและแบบฟอร์มรายงานผลใน Google Drive ของงานแผนงาน", "url": "https://drive.google.com/drive/folders/1qY60JW0RI28OJVLi1DBDuF9CvFGqwwMD", "badge": "โฟลเดอร์ Drive", "featured_home": false}, {"id": "reg-subsidy-2566-2569", "category": "ระเบียบ", "fy": "2570", "title": "แนวทางการดำเนินงานโครงการสนับสนุนค่าใช้จ่ายในการจัดการศึกษา (เงินอุดหนุนฯ)", "subtitle": "หลักเกณฑ์การใช้งบเงินอุดหนุนรายหัว และเงินกิจกรรมพัฒนาผู้เรียน (วิชาการ · คุณธรรม · ลูกเสือ · ทัศนศึกษา · ICT)", "url": "https://drive.google.com/file/d/1JcbPzHXryw7Xij6ocRUS_ACm6cqZWvcs/view", "badge": "PDF ระเบียบ", "featured_home": true}], "built_at": 1795682166720}</script>
 <script>
 (function() {
   var DATA = JSON.parse(document.getElementById('site-data').textContent);
@@ -992,14 +1014,38 @@
     return d.innerHTML;
   }
 
+  /* Manual "คู่มือ PMn ..." automatically lists forms named "... PMna-k — ..." (naming rule in README).
+     No Sheet column needed: add a form called "แบบฟอร์ม PM1a-1 — ..." and it shows under คู่มือ PM1. */
+  function pairedForms(doc) {
+    if (doc.category !== 'คู่มือ') return [];
+    var m = /^คู่มือ\s*PM(\d+)(?![\dA-Za-z])/.exec(doc.title || '');
+    if (!m) return [];
+    var re = new RegExp('PM' + m[1] + 'a-\\d+');
+    return (DATA.documents || []).filter(function(d) {
+      return d.category === 'แบบฟอร์ม' && d.url && re.test(d.title || '');
+    }).map(function(d) {
+      var t = d.title || '';
+      var code = (re.exec(t) || [''])[0];
+      var rest = t.split(/\s+[—–-]\s+/).slice(1).join(' — ');
+      return { code: code, text: rest, url: d.url, badge: d.badge };
+    }).sort(function(a, b) { return a.code.localeCompare(b.code, undefined, { numeric: true }); });
+  }
+
   function docRowHTML(doc, maxFy) {
     var isCur = String(doc.fy) === String(maxFy);
     var fyLabel = doc.fy ? ('ปีงบ ' + esc(doc.fy)) : 'ทั่วไป';
-    return '<a class="doc-row" href="' + esc(doc.url) + '" target="_blank" rel="noopener">' +
+    var pairs = pairedForms(doc);
+    var row = '<a class="doc-row' + (pairs.length ? ' has-pair' : '') + '" href="' + esc(doc.url) + '" target="_blank" rel="noopener">' +
       '<span class="doc-fy' + (isCur ? ' current' : '') + '">' + fyLabel + '</span>' +
       '<span class="doc-main"><b>' + esc(doc.title) + '</b><small>' + esc(doc.subtitle) + '</small></span>' +
       '<span class="doc-action">' + esc(doc.badge || 'เปิดเอกสาร') + '</span>' +
       '</a>';
+    if (!pairs.length) return row;
+    return row + '<div class="doc-pair"><span class="doc-pair-label">แบบฟอร์มที่ใช้คู่กัน</span>' +
+      pairs.map(function(f) {
+        return '<a href="' + esc(f.url) + '" target="_blank" rel="noopener"><b>' + esc(f.code) + '</b> ' +
+          esc(f.text) + (f.badge ? ' <em>' + esc(f.badge) + '</em>' : '') + '</a>';
+      }).join('') + '</div>';
   }
 
   function renderCategoryGroupedByYear(containerId, categories) {
