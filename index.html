@@ -80,7 +80,7 @@
     color: #d6c5e0;
     font-weight: 500;
   }
-  .fy-block h1 {
+  .fy-block .fy-title {
     font: 800 44px/1.08 "Noto Serif Thai", serif;
     margin-top: 4px;
     color: #fff;
@@ -137,7 +137,9 @@
   .btn-main:hover {
     filter: brightness(1.06);
   }
-  .btn-main:focus-visible, .btn-sub:focus-visible, .tab-btn:focus-visible, .l-row:focus-visible {
+  .btn-main:focus-visible, .btn-sub:focus-visible, .tab-btn:focus-visible, .l-row:focus-visible,
+  .doc-row:focus-visible, .doc-pair a:focus-visible, .sync-note button:focus-visible,
+  .ws-footer a:focus-visible, .spine a:focus-visible {
     outline: 3px solid var(--gold);
     outline-offset: 2px;
   }
@@ -778,6 +780,11 @@
   }
 
   .hidden { display: none !important; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .skip-link { position: absolute; left: 12px; top: -60px; z-index: 100; padding: 10px 16px; background: var(--plum-deep); color: #fff; font-weight: 700; text-decoration: none; }
+  .skip-link:focus { top: 12px; outline: 3px solid var(--gold); }
+  .workspace:focus { outline: none; }
+  .doc-row:focus-visible, .doc-pair a:focus-visible { outline-offset: -3px; }
 
   /* ===== RESPONSIVE (Tablet & Mobile) ===== */
   @media (max-width: 960px) {
@@ -808,7 +815,7 @@
     .fy-block {
       padding: 12px 0;
     }
-    .fy-block h1 {
+    .fy-block .fy-title {
       font-size: 28px;
     }
     .sp-progress {
@@ -880,6 +887,7 @@
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">ข้ามไปที่เนื้อหา</a>
 <div class="app-shell">
 
   <!-- ===== LEFT COLUMN: PERSISTENT DEEP PLUM CONTROL SPINE ===== -->
@@ -892,7 +900,7 @@
 
       <div class="fy-block">
         <div class="sp-kicker" id="fyNow">เดือนพฤศจิกายน · ไตรมาส 1</div>
-        <h1 id="fyTitle">ปีงบ 2570</h1>
+        <p class="fy-title" id="fyTitle">ปีงบ 2570</p>
         <div class="sp-progress">
           <div class="sp-bar">
             <div class="sp-fill" id="done" style="width:14%"></div>
@@ -933,25 +941,26 @@
   </aside>
 
   <!-- ===== RIGHT COLUMN: TABBED LEDGER WORKSPACE ===== -->
-  <main class="workspace">
+  <main class="workspace" id="main" tabindex="-1">
+    <h1 class="sr-only">งานแผนงาน โรงเรียนพิษณุโลกพิทยาคม</h1>
     <nav class="top-nav" role="tablist" aria-label="หมวดหมู่เอกสารงานแผนงาน">
-      <button class="tab-btn" role="tab" data-tab="home" aria-selected="true">
+      <button class="tab-btn" role="tab" id="tab-home" aria-controls="view-home" tabindex="0" data-tab="home" aria-selected="true">
         <span class="t-num">01</span>
         <span class="t-label">หน้าแรก</span>
       </button>
-      <button class="tab-btn" role="tab" data-tab="forms" aria-selected="false">
+      <button class="tab-btn" role="tab" id="tab-forms" aria-controls="view-forms" tabindex="-1" data-tab="forms" aria-selected="false">
         <span class="t-num">02</span>
         <span class="t-label">แบบฟอร์ม</span>
       </button>
-      <button class="tab-btn" role="tab" data-tab="plans" aria-selected="false">
+      <button class="tab-btn" role="tab" id="tab-plans" aria-controls="view-plans" tabindex="-1" data-tab="plans" aria-selected="false">
         <span class="t-num">03</span>
         <span class="t-label">เล่มแผน</span>
       </button>
-      <button class="tab-btn" role="tab" data-tab="manual" aria-selected="false">
+      <button class="tab-btn" role="tab" id="tab-manual" aria-controls="view-manual" tabindex="-1" data-tab="manual" aria-selected="false">
         <span class="t-num">04</span>
         <span class="t-label">คู่มือระบบ</span>
       </button>
-      <button class="tab-btn" role="tab" data-tab="regulations" aria-selected="false">
+      <button class="tab-btn" role="tab" id="tab-regulations" aria-controls="view-regulations" tabindex="-1" data-tab="regulations" aria-selected="false">
         <span class="t-num">05</span>
         <span class="t-label">ระเบียบเบิกจ่าย</span>
       </button>
@@ -961,11 +970,11 @@
     </div>
 
     <!-- VIEW 01: หน้าแรก (Option B 4-Row Split Ledger + Direct Featured Files) -->
-    <section id="view-home" class="home-split" role="tabpanel">
+    <section id="view-home" class="home-split" role="tabpanel" aria-labelledby="tab-home">
       <a class="hero-ppksar" id="linkPpksarHero" href="http://161.82.218.12/ppksar" target="_blank" rel="noopener">
         <span class="hero-text">
           <span class="hero-kicker">ทางเข้าหลักของครู</span>
-          <b class="hero-title">เข้าสู่ระบบแผนงาน <span>ppksar</span></b>
+          <h2 class="hero-title">เข้าสู่ระบบแผนงาน <span translate="no">ppksar</span></h2>
           <small class="hero-sub">สร้างกิจกรรม · ขออนุมัติใช้งบ · ประเมินและปิดโครงการ</small>
           <span class="hero-go">คลิกเพื่อเข้าระบบ <span aria-hidden="true">&rarr;</span></span>
         </span>
@@ -1011,7 +1020,7 @@
     </section>
 
     <!-- VIEW 02: แบบฟอร์ม -->
-    <section id="view-forms" class="hidden" role="tabpanel">
+    <section id="view-forms" class="hidden" role="tabpanel" aria-labelledby="tab-forms">
       <header class="section-head">
         <div>
           <h2>แบบฟอร์มโครงการและกิจกรรม</h2>
@@ -1023,7 +1032,7 @@
     </section>
 
     <!-- VIEW 03: เล่มแผน -->
-    <section id="view-plans" class="hidden" role="tabpanel">
+    <section id="view-plans" class="hidden" role="tabpanel" aria-labelledby="tab-plans">
       <header class="section-head">
         <div>
           <h2>เล่มแผนปฏิบัติการและแผนพัฒนาคุณภาพการศึกษา</h2>
@@ -1035,7 +1044,7 @@
     </section>
 
     <!-- VIEW 04: คู่มือระบบ -->
-    <section id="view-manual" class="hidden" role="tabpanel">
+    <section id="view-manual" class="hidden" role="tabpanel" aria-labelledby="tab-manual">
       <header class="section-head">
         <div>
           <h2>คู่มือการใช้งานโปรแกรมแผนงาน (PPKSAR)</h2>
@@ -1047,7 +1056,7 @@
     </section>
 
     <!-- VIEW 05: ระเบียบเบิกจ่าย -->
-    <section id="view-regulations" class="hidden" role="tabpanel">
+    <section id="view-regulations" class="hidden" role="tabpanel" aria-labelledby="tab-regulations">
       <header class="section-head">
         <div>
           <h2>กฎหมาย ระเบียบ และแนวทางการเบิกจ่ายงบประมาณ</h2>
@@ -1073,7 +1082,7 @@
   </main>
 </div>
 
-<script id="site-data" type="application/json">{"updated_at": "26 พฤศจิกายน 2569", "settings": {"site_title": "งานแผนงาน โรงเรียนพิษณุโลกพิทยาคม", "affiliation": "สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาพิษณุโลก อุตรดิตถ์", "contact_email": "planning.pp64@gmail.com", "ppksar_url": "http://161.82.218.12/ppksar", "status_70_url": "https://script.google.com/a/macros/pp.ac.th/s/AKfycbx7a1-gH2RMif03G1YDusNGbfIBUksTs5-tJw7QkGK1xWCC0V-dG3Es2-t_MChcKoET/exec", "school_web_url": "http://www.pp.ac.th/ppweb/index2.php", "fy_override": "", "spreadsheet_id": "1BIRsO9rDHGSzYljjPZgdBGvRi4fYXIFs3T1SvQvTh5o", "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1BIRsO9rDHGSzYljjPZgdBGvRi4fYXIFs3T1SvQvTh5o/edit", "apps_script_url": "https://script.google.com/macros/s/AKfycbzA_8eXDsJ8OGm823jgDq5RTvhhzdfPn7TCPy3Qqd8-dVsmEUpWOUmWposEWbVsJxpSPQ/exec"}, "documents": [{"id": "plan-2570-digital", "category": "เล่มแผน", "fy": "2570", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2570 (ฉบับปรับปรุง พ.ย. 2569)", "subtitle": "รหัสกิจกรรม 70-001 ถึง 70-239 · 9 โครงการ 6 กลยุทธ์ · งบประมาณรวม 55,736,777.63 บาท (171 หน้า)", "url": "https://drive.google.com/file/d/1tUibuagUGwknwlfLet-PxF9Tw94IK65X/view", "badge": "PDF ฉบับจริง", "featured_home": true}, {"id": "plan-2570-docx", "category": "เล่มแผน", "fy": "2570", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2570 (ฉบับเอกสาร Word)", "subtitle": "ไฟล์ต้นฉบับแก้ไขได้บน Google Docs สำหรับอ้างอิงรายละเอียดโครงการและตารางงบประมาณ", "url": "https://docs.google.com/document/d/1dB2VGa93Wjb-PrRmipMOm7fsAQemGSMZ/edit", "badge": "Google Docs", "featured_home": false}, {"id": "plan-dev-2566-2570", "category": "แผนพัฒนา", "fy": "2570", "title": "แผนพัฒนาคุณภาพการศึกษา พ.ศ. 2566–2570", "subtitle": "กรอบกลยุทธ์ เป้าประสงค์ และตัวชี้วัดระยะ 5 ปี ของโรงเรียนพิษณุโลกพิทยาคม", "url": "https://drive.google.com/file/d/1-D9kXzBTV3q1JDouZHkAfKh2cckEXW93/view", "badge": "PDF", "featured_home": false}, {"id": "plan-2569", "category": "เล่มแผน", "fy": "2569", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2569 (รวมไฟล์แผน 69)", "subtitle": "เอกสารแผนปฏิบัติการและรายละเอียดงบประมาณรายกิจกรรม ปีงบประมาณ 2569", "url": "https://drive.google.com/file/d/1Ce7zxTY-ocFNFQq91uHNlHYF5ZhQpMSF/view", "badge": "PDF", "featured_home": false}, {"id": "plan-2568", "category": "เล่มแผน", "fy": "2568", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2568 (ฉบับมีลายเซ็น)", "subtitle": "เล่มแผนปฏิบัติการประจำปีงบประมาณ 2568 ที่ผ่านการอนุมัติและลงนามแล้ว", "url": "https://drive.google.com/file/d/1x140_1lmgmkDOaeYsbHS1v1k46Ymf7Aq/view", "badge": "PDF ลงนาม", "featured_home": false}, {"id": "plan-2568-basic", "category": "แผนพัฒนา", "fy": "2568", "title": "แผนบริหารการศึกษาขั้นพื้นฐาน ปีงบประมาณ 2568", "subtitle": "เอกสารกรอบการบริหารจัดการศึกษาขั้นพื้นฐานของสถานศึกษา", "url": "https://drive.google.com/file/d/1CwdG-FUGGHCZS3J1n1A-lBHK_cJ6Ft7z/view", "badge": "PDF", "featured_home": false}, {"id": "plan-2567", "category": "เล่มแผน", "fy": "2567", "title": "เล่มแผนปฏิบัติการประจำปีงบประมาณ 2567", "subtitle": "เอกสารแผนปฏิบัติการประจำปีงบประมาณ 2567 สำหรับอ้างอิงย้อนหลัง", "url": "https://drive.google.com/file/d/1VVxlYQTEbudJ3UV6XJW6SsMjo36SbDdb/view", "badge": "PDF", "featured_home": false}, {"id": "forms-folder-main", "category": "แบบฟอร์ม", "fy": "2570", "title": "โฟลเดอร์รวมเอกสารแบบฟอร์มการจัดทำโครงการ/กิจกรรม", "subtitle": "แบบฟอร์มขออนุมัติโครงการ บันทึกข้อความขออนุญาตจัดกิจกรรม และตัวอย่างการเขียนโครงการ", "url": "https://drive.google.com/drive/folders/1fqIA26K-rTo34g6mfS-m1J3CCC6nEgnk", "badge": "โฟลเดอร์ Drive", "featured_home": true}, {"id": "form-pm3a1-docx", "category": "แบบฟอร์ม", "fy": "2570", "title": "แบบฟอร์ม PM3a-1 — ชุดประกอบเล่มรายงานกิจกรรม (ใช้คู่ระบบ ppksar)", "subtitle": "สำหรับกิจกรรมที่ปิดในระบบ ppksar: ปก คำนำ สารบัญ หน้าคั่นแทรก 5.2–5.3 ภาคผนวก และตารางรูปภาพ (ดาวน์โหลดไปพิมพ์แก้ไขได้)", "url": "https://drive.google.com/file/d/1309sIqXyE04KBJELFrL7msRGMvYb7EXN/view", "badge": "ไฟล์ Word", "featured_home": true}, {"id": "form-pm3a2-docx", "category": "แบบฟอร์ม", "fy": "2570", "title": "แบบฟอร์ม PM3a-2 — แบบรายงานกิจกรรมฉบับเต็ม (กรอกมือ นอกระบบ ppksar)", "subtitle": "สำหรับกิจกรรมที่ไม่ได้อยู่ในระบบ ppksar: รายงานผลการดำเนินงาน 13 หัวข้อ พร้อมช่องลงนามและตารางรูปภาพ (ดาวน์โหลดไปพิมพ์แก้ไขได้)", "url": "https://drive.google.com/file/d/1WFEmR52jCjJLxqE51vryCqWXfFbtiNYG/view", "badge": "ไฟล์ Word", "featured_home": false}, {"id": "form-canva-workshop", "category": "แบบฟอร์ม", "fy": "2569", "title": "เอกสารประกอบการอบรมการเขียนโครงการและการสรุปโครงการ", "subtitle": "แนวทางการเขียนหลักการและเหตุผล วัตถุประสงค์ ตัวชี้วัดความสำเร็จ และการสรุปผล", "url": "https://www.canva.com/design/DAGSIeMw0K0/n6m9KhfO3u62esIsa6trxQ/view", "badge": "สไลด์อบรม", "featured_home": false}, {"id": "manual-pm1-full", "category": "คู่มือ", "fy": "2570", "title": "คู่มือ PM1 — การสร้างกิจกรรม การเชื่อมโยงตัวชี้วัด และประเด็นการพิจารณา", "subtitle": "ขั้นตอนการตั้งกิจกรรมในระบบ ppksar การผูกตัวชี้วัดให้ปลั๊กเป็นสีเขียว และการตรวจสอบข้อมูลข้อ 6–9", "url": "https://drive.google.com/file/d/1FX7_ZCn0ERj1Zl8EoT432_bISAODCYYk/view", "badge": "PDF คู่มือหลัก", "featured_home": true}, {"id": "manual-pm1-short", "category": "คู่มือ", "fy": "2570", "title": "คู่มือ PM1 (ฉบับย่อ) — ขั้นตอนการสร้างกิจกรรมในโปรแกรมแผนงาน", "subtitle": "สรุปขั้นตอนการเพิ่มกิจกรรมใหม่และกรอกข้อมูลพื้นฐานในระบบแผนงาน", "url": "https://drive.google.com/file/d/1elga7DgUvUe8DN9MNEZ7LOrtTG0RBEiW/view", "badge": "PDF", "featured_home": false}, {"id": "manual-pm3", "category": "คู่มือ", "fy": "2570", "title": "คู่มือ PM3 — ประเมินตัวชี้วัดและสรุป (ปิด) กิจกรรม สำหรับครู (ฉบับปรับปรุง พ.ย. 2569)", "subtitle": "กำหนดและประเมินตัวชี้วัด ตรวจผู้ลงนาม ปิดกิจกรรมในระบบ ppksar ดาวน์โหลด 5.1–5.3 และประกอบเล่มรายงานคู่กับ PM3a-1 (8 หน้า)", "url": "https://drive.google.com/file/d/1IkjFacoZVxGrH-AgH3g_fXCwxIvrf_xg/view", "badge": "PDF", "featured_home": true}, {"id": "manual-folder-all", "category": "คู่มือ", "fy": "2570", "title": "โฟลเดอร์รวมคู่มือการใช้งานโปรแกรมแผนงานทั้งหมด (PM1 – PM3)", "subtitle": "คลังเก็บไฟล์คู่มือและแบบฟอร์มรายงานผลใน Google Drive ของงานแผนงาน", "url": "https://drive.google.com/drive/folders/1qY60JW0RI28OJVLi1DBDuF9CvFGqwwMD", "badge": "โฟลเดอร์ Drive", "featured_home": false}, {"id": "reg-subsidy-2566-2569", "category": "ระเบียบ", "fy": "2570", "title": "แนวทางการดำเนินงานโครงการสนับสนุนค่าใช้จ่ายในการจัดการศึกษา (เงินอุดหนุนฯ)", "subtitle": "หลักเกณฑ์การใช้งบเงินอุดหนุนรายหัว และเงินกิจกรรมพัฒนาผู้เรียน (วิชาการ · คุณธรรม · ลูกเสือ · ทัศนศึกษา · ICT)", "url": "https://drive.google.com/file/d/1JcbPzHXryw7Xij6ocRUS_ACm6cqZWvcs/view", "badge": "PDF ระเบียบ", "featured_home": true}, {"id": "reg-cgd-v143-2569", "category": "ระเบียบ", "fy": "2570", "title": "รายการค่าใช้สอย 34 รายการ ตามหนังสือ กค 0408.4/ว 143 (ลว. 4 ส.ค. 2569)", "subtitle": "หลักเกณฑ์การเบิกจ่ายค่าใช้สอยที่ผู้อำนวยการอนุมัติได้เอง (ยกเลิก ว 96 ปี 2553) · ค่าบริการ AI และซอฟต์แวร์ (ข้อ 12) · พื้นที่คลาวด์ (ข้อ 13) · ประชุมออนไลน์ (ข้อ 5) · อาหารปฏิบัติงานคาบเกี่ยวมื้อ (ข้อ 7)", "url": "https://drive.google.com/file/d/1WATuIFuWtem70Hh1Ik9O3U7kS5khUPDI/view", "badge": "PDF อัปเดต 2569", "featured_home": true}, {"id": "reg-cgd-v246-2568", "category": "ระเบียบ", "fy": "2570", "title": "อัตราค่าอาหารและค่าเช่าที่พักในการจัดฝึกอบรม ตามหนังสือ กค 0408.4/ว 246 (ลว. 31 ต.ค. 2568)", "subtitle": "เพดานอัตราใหม่สำหรับการตั้งงบอบรม ค่าย และประชุมเชิงปฏิบัติการ (ยกเลิก ว 5 ปี 2556) · สถานที่รัฐ: อาหารครบมื้อไม่เกิน 750 บาท · ไม่ครบมื้อ 500 บาท · อาหารว่าง 35 บาท/มื้อ · ที่พักเดี่ยว 1,600 / คู่ 1,000 บาท", "url": "https://drive.google.com/file/d/1sLKCAPrLPvBE9ZDKmqYqaI4naOTTm5BN/view", "badge": "PDF อัปเดต 2568", "featured_home": true}, {"id": "reg-mdes-computer-std", "category": "ระเบียบ", "fy": "2570", "title": "เกณฑ์ราคากลางและคุณลักษณะพื้นฐานอุปกรณ์และระบบคอมพิวเตอร์ (กระทรวงดิจิทัลฯ ต.ค. 2569)", "subtitle": "อ้างอิงคุณลักษณะขั้นต่ำและราคากลางเมื่อตั้งงบจัดซื้อคอมพิวเตอร์ โน้ตบุ๊ก (รวมรุ่นรองรับ AI 40,000 บาท) และเครื่องพิมพ์ · เกณฑ์จัดหาทดแทนต้องใช้งานมาแล้วไม่น้อยกว่า 7 ปี", "url": "https://drive.google.com/file/d/1Q3nYav9cocJFV3LSOwnKN9UL3zLpD8SD/view", "badge": "PDF อัปเดต 2569", "featured_home": false}, {"id": "reg-bb-equipment-std-2568", "category": "ระเบียบ", "fy": "2570", "title": "บัญชีราคามาตรฐานครุภัณฑ์ สำนักงบประมาณ (ฉบับ ธ.ค. 2568)", "subtitle": "อ้างอิงราคากลางและคุณลักษณะเฉพาะครุภัณฑ์ 12 ประเภท (การศึกษา · โฆษณาและเผยแพร่ · ไฟฟ้าและวิทยุ · สำนักงาน · วิทยาศาสตร์ ฯลฯ) สำหรับตั้งงบจัดซื้อครุภัณฑ์ในแผนปฏิบัติการฯ", "url": "https://drive.google.com/file/d/1gm3lfQvYQ4G2x598Uu_mvU29K6qNS3L1/view", "badge": "PDF ราคากลาง", "featured_home": false}, {"id": "reg-obec-income-2549", "category": "ระเบียบ", "fy": "2570", "title": "ระเบียบและหลักเกณฑ์การบริหารจัดการเงินรายได้สถานศึกษาขั้นพื้นฐาน (สพฐ.)", "subtitle": "กรอบการใช้จ่ายเงินรายได้สถานศึกษา (เงินบำรุงการศึกษา · เงินบริจาค · เงินระดมทรัพยากร) ประเภทรายจ่ายที่เบิกได้ และอำนาจการอนุมัติของสถานศึกษา", "url": "https://drive.google.com/file/d/1BmlvAdYpqPGBTBW2oXd3U-kPFkBpAQbe/view", "badge": "PDF ระเบียบ", "featured_home": false}, {"id": "reg-bb-expense-class", "category": "ระเบียบ", "fy": "2570", "title": "หลักเกณฑ์การจำแนกประเภทรายจ่ายตามงบประมาณ (สำนักงบประมาณ)", "subtitle": "แนวทางจำแนกหมวดรายจ่ายเมื่อจัดทำโครงการและกรอกงบประมาณ · ค่าตอบแทน · ค่าใช้สอย · ค่าวัสดุ (ไม่เกิน 20,000 บาท) · ค่าครุภัณฑ์ (เกิน 20,000 บาท)", "url": "https://drive.google.com/file/d/1DMrEwwJ-RIPVK8pPVlksAOxwtntiF6Ur/view", "badge": "PDF หลักเกณฑ์", "featured_home": false}, {"id": "reg-mof-training-2549", "category": "ระเบียบ", "fy": "2570", "title": "ระเบียบกระทรวงการคลังว่าด้วยค่าใช้จ่ายในการฝึกอบรม การจัดงาน และการประชุมระหว่างประเทศ", "subtitle": "หลักเกณฑ์การจัดอบรม/จัดงาน และอัตราค่าสมนาคุณวิทยากร (ภาครัฐไม่เกิน 600 บาท/ชั่วโมง · เอกชนหรือบุคคลภายนอกไม่เกิน 1,200 บาท/ชั่วโมง) ใช้คู่กับอัตราอาหารและที่พักตาม ว 246", "url": "https://drive.google.com/file/d/1JFn47C12SC-vQKYxT7TfDfozcBuZrrus/view", "badge": "PDF ระเบียบ", "featured_home": false}, {"id": "reg-mof-travel-rates", "category": "ระเบียบ", "fy": "2570", "title": "หลักเกณฑ์และอัตราค่าใช้จ่ายในการเดินทางไปราชการ", "subtitle": "อ้างอิงอัตราเบี้ยเลี้ยง (240 บาท/วัน) · ค่าเช่าที่พัก · ค่าพาหนะและค่าชดเชยรถยนต์ส่วนตัว (4 บาท/กิโลเมตร) สำหรับการเดินทางไปราชการหรือนำนักเรียนเข้าร่วมการแข่งขัน", "url": "https://drive.google.com/file/d/1g9BHrSdoNwwbJLwokHimpS5bUupGdR58/view", "badge": "PDF สรุปอัตรา", "featured_home": false}, {"id": "reg-cgd-v119-2561", "category": "ระเบียบ", "fy": "2570", "title": "แนวทางปฏิบัติการจัดหาพัสดุค่าใช้จ่ายในการบริหารงาน ฝึกอบรม จัดงาน และประชุม (ว 119)", "subtitle": "ตรวจสอบรายการค่าใช้จ่ายตามบัญชีตาราง 1–2 ที่ได้รับการผ่อนปรนขั้นตอนการจัดซื้อจัดจ้าง เพื่อให้ดำเนินการจัดหาและเบิกจ่ายได้อย่างถูกต้อง", "url": "https://drive.google.com/file/d/1vh3yZGsPSn9tw_UQqQjHqWjzgeDH_GI5/view", "badge": "PDF พัสดุ", "featured_home": false}], "built_at": 1795704394751}</script>
+<script id="site-data" type="application/json">{"updated_at": "26 พฤศจิกายน 2569", "settings": {"site_title": "งานแผนงาน โรงเรียนพิษณุโลกพิทยาคม", "affiliation": "สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาพิษณุโลก อุตรดิตถ์", "contact_email": "planning.pp64@gmail.com", "ppksar_url": "http://161.82.218.12/ppksar", "status_70_url": "https://script.google.com/a/macros/pp.ac.th/s/AKfycbx7a1-gH2RMif03G1YDusNGbfIBUksTs5-tJw7QkGK1xWCC0V-dG3Es2-t_MChcKoET/exec", "school_web_url": "http://www.pp.ac.th/ppweb/index2.php", "fy_override": "", "spreadsheet_id": "1BIRsO9rDHGSzYljjPZgdBGvRi4fYXIFs3T1SvQvTh5o", "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1BIRsO9rDHGSzYljjPZgdBGvRi4fYXIFs3T1SvQvTh5o/edit", "apps_script_url": "https://script.google.com/macros/s/AKfycbzA_8eXDsJ8OGm823jgDq5RTvhhzdfPn7TCPy3Qqd8-dVsmEUpWOUmWposEWbVsJxpSPQ/exec"}, "documents": [{"id": "plan-2570-digital", "category": "เล่มแผน", "fy": "2570", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2570 (ฉบับปรับปรุง พ.ย. 2569)", "subtitle": "รหัสกิจกรรม 70-001 ถึง 70-239 · 9 โครงการ 6 กลยุทธ์ · งบประมาณรวม 55,736,777.63 บาท (171 หน้า)", "url": "https://drive.google.com/file/d/1tUibuagUGwknwlfLet-PxF9Tw94IK65X/view", "badge": "PDF ฉบับจริง", "featured_home": true}, {"id": "plan-2570-docx", "category": "เล่มแผน", "fy": "2570", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2570 (ฉบับเอกสาร Word)", "subtitle": "ไฟล์ต้นฉบับแก้ไขได้บน Google Docs สำหรับอ้างอิงรายละเอียดโครงการและตารางงบประมาณ", "url": "https://docs.google.com/document/d/1dB2VGa93Wjb-PrRmipMOm7fsAQemGSMZ/edit", "badge": "Google Docs", "featured_home": false}, {"id": "plan-dev-2566-2570", "category": "แผนพัฒนา", "fy": "2570", "title": "แผนพัฒนาคุณภาพการศึกษา พ.ศ. 2566–2570", "subtitle": "กรอบกลยุทธ์ เป้าประสงค์ และตัวชี้วัดระยะ 5 ปี ของโรงเรียนพิษณุโลกพิทยาคม", "url": "https://drive.google.com/file/d/1-D9kXzBTV3q1JDouZHkAfKh2cckEXW93/view", "badge": "PDF", "featured_home": false}, {"id": "plan-2569", "category": "เล่มแผน", "fy": "2569", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2569 (รวมไฟล์แผน 69)", "subtitle": "เอกสารแผนปฏิบัติการและรายละเอียดงบประมาณรายกิจกรรม ปีงบประมาณ 2569", "url": "https://drive.google.com/file/d/1Ce7zxTY-ocFNFQq91uHNlHYF5ZhQpMSF/view", "badge": "PDF", "featured_home": false}, {"id": "plan-2568", "category": "เล่มแผน", "fy": "2568", "title": "แผนปฏิบัติการประจำปีงบประมาณ 2568 (ฉบับมีลายเซ็น)", "subtitle": "เล่มแผนปฏิบัติการประจำปีงบประมาณ 2568 ที่ผ่านการอนุมัติและลงนามแล้ว", "url": "https://drive.google.com/file/d/1x140_1lmgmkDOaeYsbHS1v1k46Ymf7Aq/view", "badge": "PDF ลงนาม", "featured_home": false}, {"id": "plan-2568-basic", "category": "แผนพัฒนา", "fy": "2568", "title": "แผนบริหารการศึกษาขั้นพื้นฐาน ปีงบประมาณ 2568", "subtitle": "เอกสารกรอบการบริหารจัดการศึกษาขั้นพื้นฐานของสถานศึกษา", "url": "https://drive.google.com/file/d/1CwdG-FUGGHCZS3J1n1A-lBHK_cJ6Ft7z/view", "badge": "PDF", "featured_home": false}, {"id": "plan-2567", "category": "เล่มแผน", "fy": "2567", "title": "เล่มแผนปฏิบัติการประจำปีงบประมาณ 2567", "subtitle": "เอกสารแผนปฏิบัติการประจำปีงบประมาณ 2567 สำหรับอ้างอิงย้อนหลัง", "url": "https://drive.google.com/file/d/1VVxlYQTEbudJ3UV6XJW6SsMjo36SbDdb/view", "badge": "PDF", "featured_home": false}, {"id": "forms-folder-main", "category": "แบบฟอร์ม", "fy": "2570", "title": "โฟลเดอร์รวมเอกสารแบบฟอร์มการจัดทำโครงการ/กิจกรรม", "subtitle": "แบบฟอร์มขออนุมัติโครงการ บันทึกข้อความขออนุญาตจัดกิจกรรม และตัวอย่างการเขียนโครงการ", "url": "https://drive.google.com/drive/folders/1fqIA26K-rTo34g6mfS-m1J3CCC6nEgnk", "badge": "โฟลเดอร์ Drive", "featured_home": true}, {"id": "form-pm3a1-docx", "category": "แบบฟอร์ม", "fy": "2570", "title": "แบบฟอร์ม PM3a-1 — ชุดประกอบเล่มรายงานกิจกรรม (ใช้คู่ระบบ ppksar)", "subtitle": "สำหรับกิจกรรมที่ปิดในระบบ ppksar: ปก คำนำ สารบัญ หน้าคั่นแทรก 5.2–5.3 ภาคผนวก และตารางรูปภาพ (ดาวน์โหลดไปพิมพ์แก้ไขได้)", "url": "https://drive.google.com/file/d/1309sIqXyE04KBJELFrL7msRGMvYb7EXN/view", "badge": "ไฟล์ Word", "featured_home": true}, {"id": "form-pm3a2-docx", "category": "แบบฟอร์ม", "fy": "2570", "title": "แบบฟอร์ม PM3a-2 — แบบรายงานกิจกรรมฉบับเต็ม (กรอกมือ นอกระบบ ppksar)", "subtitle": "สำหรับกิจกรรมที่ไม่ได้อยู่ในระบบ ppksar: รายงานผลการดำเนินงาน 13 หัวข้อ พร้อมช่องลงนามและตารางรูปภาพ (ดาวน์โหลดไปพิมพ์แก้ไขได้)", "url": "https://drive.google.com/file/d/1WFEmR52jCjJLxqE51vryCqWXfFbtiNYG/view", "badge": "ไฟล์ Word", "featured_home": false}, {"id": "form-canva-workshop", "category": "แบบฟอร์ม", "fy": "2569", "title": "เอกสารประกอบการอบรมการเขียนโครงการและการสรุปโครงการ", "subtitle": "แนวทางการเขียนหลักการและเหตุผล วัตถุประสงค์ ตัวชี้วัดความสำเร็จ และการสรุปผล", "url": "https://www.canva.com/design/DAGSIeMw0K0/n6m9KhfO3u62esIsa6trxQ/view", "badge": "สไลด์อบรม", "featured_home": false}, {"id": "manual-pm1-full", "category": "คู่มือ", "fy": "2570", "title": "คู่มือ PM1 — การสร้างกิจกรรม การเชื่อมโยงตัวชี้วัด และประเด็นการพิจารณา", "subtitle": "ขั้นตอนการตั้งกิจกรรมในระบบ ppksar การผูกตัวชี้วัดให้ปลั๊กเป็นสีเขียว และการตรวจสอบข้อมูลข้อ 6–9", "url": "https://drive.google.com/file/d/1FX7_ZCn0ERj1Zl8EoT432_bISAODCYYk/view", "badge": "PDF คู่มือหลัก", "featured_home": true}, {"id": "manual-pm1-short", "category": "คู่มือ", "fy": "2570", "title": "คู่มือ PM1 (ฉบับย่อ) — ขั้นตอนการสร้างกิจกรรมในโปรแกรมแผนงาน", "subtitle": "สรุปขั้นตอนการเพิ่มกิจกรรมใหม่และกรอกข้อมูลพื้นฐานในระบบแผนงาน", "url": "https://drive.google.com/file/d/1elga7DgUvUe8DN9MNEZ7LOrtTG0RBEiW/view", "badge": "PDF", "featured_home": false}, {"id": "manual-pm3", "category": "คู่มือ", "fy": "2570", "title": "คู่มือ PM3 — ประเมินตัวชี้วัดและสรุป (ปิด) กิจกรรม สำหรับครู (ฉบับปรับปรุง พ.ย. 2569)", "subtitle": "กำหนดและประเมินตัวชี้วัด ตรวจผู้ลงนาม ปิดกิจกรรมในระบบ ppksar ดาวน์โหลด 5.1–5.3 และประกอบเล่มรายงานคู่กับ PM3a-1 (8 หน้า)", "url": "https://drive.google.com/file/d/1IkjFacoZVxGrH-AgH3g_fXCwxIvrf_xg/view", "badge": "PDF", "featured_home": true}, {"id": "manual-folder-all", "category": "คู่มือ", "fy": "2570", "title": "โฟลเดอร์รวมคู่มือการใช้งานโปรแกรมแผนงานทั้งหมด (PM1 – PM3)", "subtitle": "คลังเก็บไฟล์คู่มือและแบบฟอร์มรายงานผลใน Google Drive ของงานแผนงาน", "url": "https://drive.google.com/drive/folders/1qY60JW0RI28OJVLi1DBDuF9CvFGqwwMD", "badge": "โฟลเดอร์ Drive", "featured_home": false}, {"id": "reg-subsidy-2566-2569", "category": "ระเบียบ", "fy": "2570", "title": "แนวทางการดำเนินงานโครงการสนับสนุนค่าใช้จ่ายในการจัดการศึกษา (เงินอุดหนุนฯ)", "subtitle": "หลักเกณฑ์การใช้งบเงินอุดหนุนรายหัว และเงินกิจกรรมพัฒนาผู้เรียน (วิชาการ · คุณธรรม · ลูกเสือ · ทัศนศึกษา · ICT)", "url": "https://drive.google.com/file/d/1JcbPzHXryw7Xij6ocRUS_ACm6cqZWvcs/view", "badge": "PDF ระเบียบ", "featured_home": true}, {"id": "reg-cgd-v143-2569", "category": "ระเบียบ", "fy": "2570", "title": "รายการค่าใช้สอย 34 รายการ ตามหนังสือ กค 0408.4/ว 143 (ลว. 4 ส.ค. 2569)", "subtitle": "หลักเกณฑ์การเบิกจ่ายค่าใช้สอยที่ผู้อำนวยการอนุมัติได้เอง (ยกเลิก ว 96 ปี 2553) · ค่าบริการ AI และซอฟต์แวร์ (ข้อ 12) · พื้นที่คลาวด์ (ข้อ 13) · ประชุมออนไลน์ (ข้อ 5) · อาหารปฏิบัติงานคาบเกี่ยวมื้อ (ข้อ 7)", "url": "https://drive.google.com/file/d/1WATuIFuWtem70Hh1Ik9O3U7kS5khUPDI/view", "badge": "PDF อัปเดต 2569", "featured_home": true}, {"id": "reg-cgd-v246-2568", "category": "ระเบียบ", "fy": "2570", "title": "อัตราค่าอาหารและค่าเช่าที่พักในการจัดฝึกอบรม ตามหนังสือ กค 0408.4/ว 246 (ลว. 31 ต.ค. 2568)", "subtitle": "เพดานอัตราใหม่สำหรับการตั้งงบอบรม ค่าย และประชุมเชิงปฏิบัติการ (ยกเลิก ว 5 ปี 2556) · สถานที่รัฐ: อาหารครบมื้อไม่เกิน 750 บาท · ไม่ครบมื้อ 500 บาท · อาหารว่าง 35 บาท/มื้อ · ที่พักเดี่ยว 1,600 / คู่ 1,000 บาท", "url": "https://drive.google.com/file/d/1sLKCAPrLPvBE9ZDKmqYqaI4naOTTm5BN/view", "badge": "PDF อัปเดต 2568", "featured_home": true}, {"id": "reg-mdes-computer-std", "category": "ระเบียบ", "fy": "2570", "title": "เกณฑ์ราคากลางและคุณลักษณะพื้นฐานอุปกรณ์และระบบคอมพิวเตอร์ (กระทรวงดิจิทัลฯ ต.ค. 2569)", "subtitle": "อ้างอิงคุณลักษณะขั้นต่ำและราคากลางเมื่อตั้งงบจัดซื้อคอมพิวเตอร์ โน้ตบุ๊ก (รวมรุ่นรองรับ AI 40,000 บาท) และเครื่องพิมพ์ · เกณฑ์จัดหาทดแทนต้องใช้งานมาแล้วไม่น้อยกว่า 7 ปี", "url": "https://drive.google.com/file/d/1Q3nYav9cocJFV3LSOwnKN9UL3zLpD8SD/view", "badge": "PDF อัปเดต 2569", "featured_home": false}, {"id": "reg-bb-equipment-std-2568", "category": "ระเบียบ", "fy": "2570", "title": "บัญชีราคามาตรฐานครุภัณฑ์ สำนักงบประมาณ (ฉบับ ธ.ค. 2568)", "subtitle": "อ้างอิงราคากลางและคุณลักษณะเฉพาะครุภัณฑ์ 12 ประเภท (การศึกษา · โฆษณาและเผยแพร่ · ไฟฟ้าและวิทยุ · สำนักงาน · วิทยาศาสตร์ ฯลฯ) สำหรับตั้งงบจัดซื้อครุภัณฑ์ในแผนปฏิบัติการฯ", "url": "https://drive.google.com/file/d/1gm3lfQvYQ4G2x598Uu_mvU29K6qNS3L1/view", "badge": "PDF ราคากลาง", "featured_home": false}, {"id": "reg-obec-income-2549", "category": "ระเบียบ", "fy": "2570", "title": "ระเบียบและหลักเกณฑ์การบริหารจัดการเงินรายได้สถานศึกษาขั้นพื้นฐาน (สพฐ.)", "subtitle": "กรอบการใช้จ่ายเงินรายได้สถานศึกษา (เงินบำรุงการศึกษา · เงินบริจาค · เงินระดมทรัพยากร) ประเภทรายจ่ายที่เบิกได้ และอำนาจการอนุมัติของสถานศึกษา", "url": "https://drive.google.com/file/d/1BmlvAdYpqPGBTBW2oXd3U-kPFkBpAQbe/view", "badge": "PDF ระเบียบ", "featured_home": false}, {"id": "reg-bb-expense-class", "category": "ระเบียบ", "fy": "2570", "title": "หลักเกณฑ์การจำแนกประเภทรายจ่ายตามงบประมาณ (สำนักงบประมาณ)", "subtitle": "แนวทางจำแนกหมวดรายจ่ายเมื่อจัดทำโครงการและกรอกงบประมาณ · ค่าตอบแทน · ค่าใช้สอย · ค่าวัสดุ (ไม่เกิน 20,000 บาท) · ค่าครุภัณฑ์ (เกิน 20,000 บาท)", "url": "https://drive.google.com/file/d/1DMrEwwJ-RIPVK8pPVlksAOxwtntiF6Ur/view", "badge": "PDF หลักเกณฑ์", "featured_home": false}, {"id": "reg-mof-training-2549", "category": "ระเบียบ", "fy": "2570", "title": "ระเบียบกระทรวงการคลังว่าด้วยค่าใช้จ่ายในการฝึกอบรม การจัดงาน และการประชุมระหว่างประเทศ", "subtitle": "หลักเกณฑ์การจัดอบรม/จัดงาน และอัตราค่าสมนาคุณวิทยากร (ภาครัฐไม่เกิน 600 บาท/ชั่วโมง · เอกชนหรือบุคคลภายนอกไม่เกิน 1,200 บาท/ชั่วโมง) ใช้คู่กับอัตราอาหารและที่พักตาม ว 246", "url": "https://drive.google.com/file/d/1JFn47C12SC-vQKYxT7TfDfozcBuZrrus/view", "badge": "PDF ระเบียบ", "featured_home": false}, {"id": "reg-mof-travel-rates", "category": "ระเบียบ", "fy": "2570", "title": "หลักเกณฑ์และอัตราค่าใช้จ่ายในการเดินทางไปราชการ", "subtitle": "อ้างอิงอัตราเบี้ยเลี้ยง (240 บาท/วัน) · ค่าเช่าที่พัก · ค่าพาหนะและค่าชดเชยรถยนต์ส่วนตัว (4 บาท/กิโลเมตร) สำหรับการเดินทางไปราชการหรือนำนักเรียนเข้าร่วมการแข่งขัน", "url": "https://drive.google.com/file/d/1g9BHrSdoNwwbJLwokHimpS5bUupGdR58/view", "badge": "PDF สรุปอัตรา", "featured_home": false}, {"id": "reg-cgd-v119-2561", "category": "ระเบียบ", "fy": "2570", "title": "แนวทางปฏิบัติการจัดหาพัสดุค่าใช้จ่ายในการบริหารงาน ฝึกอบรม จัดงาน และประชุม (ว 119)", "subtitle": "ตรวจสอบรายการค่าใช้จ่ายตามบัญชีตาราง 1–2 ที่ได้รับการผ่อนปรนขั้นตอนการจัดซื้อจัดจ้าง เพื่อให้ดำเนินการจัดหาและเบิกจ่ายได้อย่างถูกต้อง", "url": "https://drive.google.com/file/d/1vh3yZGsPSn9tw_UQqQjHqWjzgeDH_GI5/view", "badge": "PDF พัสดุ", "featured_home": false}], "built_at": 1795711814749}</script>
 <script>
 (function() {
   var DATA = JSON.parse(document.getElementById('site-data').textContent);
@@ -1220,7 +1229,9 @@
   function activateTab(tabId, pushHash) {
     if (TABS.indexOf(tabId) < 0) tabId = 'home';
     document.querySelectorAll('.tab-btn').forEach(function(b) {
-      b.setAttribute('aria-selected', b.getAttribute('data-tab') === tabId ? 'true' : 'false');
+      var on = b.getAttribute('data-tab') === tabId;
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.tabIndex = on ? 0 : -1;
     });
     TABS.forEach(function(t) {
       var el = document.getElementById('view-' + t);
@@ -1236,6 +1247,24 @@
     b.addEventListener('click', function() {
       activateTab(b.getAttribute('data-tab'), true);
     });
+  });
+  // keyboard: left/right arrows (and Home/End) move between tabs, like a desktop tab strip
+  var tabBtns = Array.prototype.slice.call(document.querySelectorAll('.tab-btn'));
+  tabBtns.forEach(function(b, i) {
+    b.addEventListener('keydown', function(e) {
+      var j = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 :
+              e.key === 'Home' ? 0 : e.key === 'End' ? tabBtns.length - 1 : null;
+      if (j === null) return;
+      e.preventDefault();
+      var t = tabBtns[(j + tabBtns.length) % tabBtns.length];
+      activateTab(t.getAttribute('data-tab'), true);
+      t.focus();
+    });
+  });
+  var skip = document.querySelector('.skip-link');
+  if (skip) skip.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('main').focus();
   });
   document.querySelectorAll('[data-goto]').forEach(function(b) {
     b.addEventListener('click', function() {
@@ -1289,7 +1318,7 @@
 
   window.addEventListener('hashchange', function() {
     var h = (location.hash || '').replace(/^#/, '');
-    if (h) activateTab(h, false);
+    if (TABS.indexOf(h) >= 0) activateTab(h, false);
   });
   var initHash = (location.hash || '').replace(/^#/, '');
   if (initHash && TABS.indexOf(initHash) >= 0) {
